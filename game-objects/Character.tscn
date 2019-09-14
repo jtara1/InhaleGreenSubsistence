@@ -1,49 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/character/Character.gd" type="Script" id=1]
-[ext_resource path="res://images/character/slime spritesheet calciumtrice.png" type="Texture" id=2]
-[ext_resource path="res://scripts/character/CharacterAnimationPlayer.gd" type="Script" id=3]
-[ext_resource path="res://scripts/character/CharacterScaling.gd" type="Script" id=4]
+[ext_resource path="res://scripts/character/CharacterScaling.gd" type="Script" id=2]
+[ext_resource path="res://game-objects/SlimeSprite.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.3372, 31.2654 )
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Sprite
-
-"
-
-[sub_resource type="Animation" id=3]
-resource_name = "death"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 41, 42, 43, 44, 45, 47, 48, 49 ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 4.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
-}
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -51,25 +13,13 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 32 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
-offset = Vector2( 0, -16 )
-flip_h = true
-vframes = 20
-hframes = 10
-frame = 41
-script = SubResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite")
-playback_default_blend_time = 20.0
-playback_speed = 2.5
-anims/death = SubResource( 3 )
-anims/idle = SubResource( 4 )
-script = ExtResource( 3 )
-
 [node name="CharacterScaling" type="Node" parent="."]
-script = ExtResource( 4 )
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+script = ExtResource( 2 )
+
+[node name="SlimeSprite" parent="." instance=ExtResource( 3 )]
+flip_h = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false

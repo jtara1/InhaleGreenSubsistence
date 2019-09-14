@@ -5,9 +5,3 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-
-[node name="Sprite" parent="." index="1"]
-modulate = Color( 0.701961, 0.0509804, 0.0509804, 1 )
-
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
-current = true
