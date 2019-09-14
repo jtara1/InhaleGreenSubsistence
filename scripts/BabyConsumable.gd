@@ -1,5 +1,5 @@
 extends "Consumable.gd"
 
 
-func devoured(agent: Agent, modifiers: Dictionary = {"size": 1.0}):
+func devoured(agent: Agent, modifiers: Dictionary = {"body_size": 0.1}):
 	.devoured(agent, modifiers)

@@ -37,7 +37,7 @@ texture = ExtResource( 2 )
 flip_h = true
 vframes = 20
 hframes = 10
-frame = 6
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")
