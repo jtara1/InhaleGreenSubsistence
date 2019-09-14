@@ -1,4 +1,4 @@
-extends Node
+extends KinematicBody2D
 class_name Agent
 
 var health: int = 10
