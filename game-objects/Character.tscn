@@ -32,9 +32,10 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -33.8707 )
+position = Vector2( -0.0115356, 31.9076 )
 scale = Vector2( 4.12, 4.12 )
 texture = ExtResource( 2 )
+offset = Vector2( 0.00279987, -15.9656 )
 flip_h = true
 vframes = 20
 hframes = 10

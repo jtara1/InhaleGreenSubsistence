@@ -17,3 +17,6 @@ position = Vector2( 118.727, 248.199 )
 
 [node name="Baby" parent="." instance=ExtResource( 3 )]
 position = Vector2( 219.3, 251 )
+
+[node name="Baby2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 383.905, 251 )
