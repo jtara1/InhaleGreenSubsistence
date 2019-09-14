@@ -1,7 +1,7 @@
 extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
 
 export(float) var speed = 300.0
-export(float) var scaling_smoothing = 1
+export(float) var scaling_smoothing = 10
 
 onready var init_sprite_scale = $Sprite.scale
 onready var init_hurtbox_scale = $CollisionShape2D.scale
@@ -15,7 +15,7 @@ func _ready():
 
 func _physics_process(delta):
 	move(delta)
-	scale(delta)
+	scale_size(delta)
 	
 ####################
 # methods
@@ -33,12 +33,15 @@ func move(delta):
 		
 	position += movement * speed * delta
 	
-func scale(delta):
+func scale_size(delta):
 	var sprite_scale = $Sprite.scale.slerp(target_sprite_scale, scaling_smoothing * delta)
 	var hbox_scale = $CollisionShape2D.scale.slerp(target_hurtbox_scale, scaling_smoothing * delta)
 	
-	$Sprite.scale += sprite_scale
-	$CollisionShape2D.scale += hbox_scale
+	if sprite_scale != Vector2.ZERO:
+		print(sprite_scale, hbox_scale)
+		$Sprite.scale += sprite_scale
+		$CollisionShape2D.scale += hbox_scale
+	
 
 func set_body_scaling(scaling_multiplier):
 	target_sprite_scale = $Sprite.scale * scaling_multiplier
