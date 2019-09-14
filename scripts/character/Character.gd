@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
 
 export(float) var speed = 300.0
 

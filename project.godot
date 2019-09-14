@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/agent/Agent.gd"
 }, {
-"base": "Node",
+"base": "Area2D",
 "class": "Consumable",
 "language": "GDScript",
 "path": "res://scripts/Consumable.gd"
@@ -29,6 +29,10 @@ _global_script_class_icons={
 config/name="InhaleGreenSubsistence"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Env="*res://scripts/globals/Env.gd"
 
 [display]
 
