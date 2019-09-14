@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/agent/Agent.gd"
 }, {
-"base": "Area2D",
+"base": "CollisionShape2D",
 "class": "Consumable",
 "language": "GDScript",
 "path": "res://scripts/Consumable.gd"
