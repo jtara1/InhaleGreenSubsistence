@@ -22,5 +22,4 @@ stream = ExtResource( 3 )
 position = Vector2( 0, 16 )
 scale = Vector2( 3, 3 )
 [connection signal="body_entered" from="." to="ConsumableBaby" method="_on_Baby_body_entered"]
-[connection signal="tree_exiting" from="." to="." method="_on_Baby_tree_exiting"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_AudioStreamPlayer2D_finished"]

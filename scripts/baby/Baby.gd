@@ -2,6 +2,8 @@ extends Area2D # extends something else
 
 var died = false
 
+func _ready():
+	$SlimeSprite/AnimationPlayer.connect("animation_finished", self, "_on_SlimSprite_animation_finished")
 
 func die():
 	died = true
@@ -10,7 +12,7 @@ func die():
 
 ######################
 # event listners
-func _on_Character_animation_finished(anim_name):
+func _on_SlimSprite_animation_finished(anim_name):
 	match anim_name:
 		"death":
 			queue_free()

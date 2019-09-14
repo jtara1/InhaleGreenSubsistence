@@ -1,5 +1,5 @@
-extends AnimationPlayer
+extends Sprite
 
 
 func _ready():
-	play("idle")
+	$AnimationPlayer.play("idle")
