@@ -1,0 +1,239 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://images/platforms/PNG Grass/Spritesheet/sheet.png" type="Texture" id=1]
+
+
+[node name="Main" type="Node"]
+
+[node name="Row1" type="Node2D" parent="."]
+
+[node name="Tile1" type="Sprite" parent="Row1"]
+position = Vector2( -371.956, 1.47018 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 70, 70 )
+
+[node name="Tile2" type="Sprite" parent="Row1"]
+position = Vector2( -279.811, 4.31418 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 70, 70, 70 )
+
+[node name="Tile3" type="Sprite" parent="Row1"]
+position = Vector2( -183.514, 1.37381 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 140, 70, 70 )
+
+[node name="Tile4" type="Sprite" parent="Row1"]
+position = Vector2( -87.9519, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 210, 70, 70 )
+
+[node name="Tile5" type="Sprite" parent="Row1"]
+position = Vector2( 12.0206, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 280, 70, 70 )
+
+[node name="Tile6" type="Sprite" parent="Row1"]
+position = Vector2( 102.437, -0.0963745 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 350, 70, 70 )
+
+[node name="Tile7" type="Sprite" parent="Row1"]
+position = Vector2( 201.481, -3.1915 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 420, 70, 70 )
+
+[node name="Row2" type="Node2D" parent="."]
+position = Vector2( 0.773773, 106.008 )
+
+[node name="Tile8" type="Sprite" parent="Row2"]
+position = Vector2( -371.956, 1.47018 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 70, 0, 70, 70 )
+
+[node name="Tile9" type="Sprite" parent="Row2"]
+position = Vector2( -279.811, 4.31418 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 70, 70, 70, 70 )
+
+[node name="Tile10" type="Sprite" parent="Row2"]
+position = Vector2( -183.514, 1.37381 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 70, 140, 70, 70 )
+
+[node name="Tile11" type="Sprite" parent="Row2"]
+position = Vector2( -87.9519, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 70, 210, 70, 70 )
+
+[node name="Tile12" type="Sprite" parent="Row2"]
+position = Vector2( 12.0206, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 70, 280, 70, 70 )
+
+[node name="Tile13" type="Sprite" parent="Row2"]
+position = Vector2( 102.437, -0.0963745 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 70, 350, 70, 70 )
+
+[node name="Tile14" type="Sprite" parent="Row2"]
+position = Vector2( 201.481, -3.1915 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 70, 420, 70, 70 )
+
+[node name="Row3" type="Node2D" parent="."]
+position = Vector2( 1.54758, 215.885 )
+
+[node name="Tile15" type="Sprite" parent="Row3"]
+position = Vector2( -371.956, 1.47018 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 140, 0, 70, 70 )
+
+[node name="Tile16" type="Sprite" parent="Row3"]
+position = Vector2( -279.811, 4.31418 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 140, 70, 70, 70 )
+
+[node name="Tile17" type="Sprite" parent="Row3"]
+position = Vector2( -183.514, 1.37381 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 140, 140, 70, 70 )
+
+[node name="Tile18" type="Sprite" parent="Row3"]
+position = Vector2( -87.9519, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 140, 210, 70, 70 )
+
+[node name="Tile19" type="Sprite" parent="Row3"]
+position = Vector2( 12.0206, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 140, 280, 70, 70 )
+
+[node name="Tile20" type="Sprite" parent="Row3"]
+position = Vector2( 102.437, -0.0963745 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 140, 350, 70, 70 )
+
+[node name="Tile21" type="Sprite" parent="Row3"]
+position = Vector2( 201.481, -3.1915 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 140, 420, 70, 70 )
+
+[node name="Row4" type="Node2D" parent="."]
+position = Vector2( -1.77652, 339.985 )
+
+[node name="Tile22" type="Sprite" parent="Row4"]
+position = Vector2( -371.956, 1.47018 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 0, 70, 70 )
+
+[node name="Tile23" type="Sprite" parent="Row4"]
+position = Vector2( -279.811, 4.31418 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 70, 70, 70 )
+
+[node name="Tile24" type="Sprite" parent="Row4"]
+position = Vector2( -183.514, 1.37381 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 140, 70, 70 )
+
+[node name="Tile25" type="Sprite" parent="Row4"]
+position = Vector2( -87.9519, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 210, 70, 70 )
+
+[node name="Tile26" type="Sprite" parent="Row4"]
+position = Vector2( 12.0206, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 280, 70, 70 )
+
+[node name="Tile27" type="Sprite" parent="Row4"]
+position = Vector2( 102.437, -0.0963745 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 350, 70, 70 )
+
+[node name="Tile28" type="Sprite" parent="Row4"]
+position = Vector2( 201.481, -3.1915 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 420, 70, 70 )
+
+[node name="Row5" type="Node2D" parent="."]
+position = Vector2( 1.54758, 441.924 )
+
+[node name="Tile29" type="Sprite" parent="Row5"]
+position = Vector2( -371.956, 1.47018 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 280, 0, 70, 70 )
+
+[node name="Tile30" type="Sprite" parent="Row5"]
+position = Vector2( -279.811, 4.31418 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 280, 70, 70, 70 )
+
+[node name="Tile31" type="Sprite" parent="Row5"]
+position = Vector2( -183.514, 1.37381 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 280, 140, 70, 70 )
+
+[node name="Tile32" type="Sprite" parent="Row5"]
+position = Vector2( -87.9519, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 280, 210, 70, 70 )
+
+[node name="Tile33" type="Sprite" parent="Row5"]
+position = Vector2( 12.0206, 2.84399 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 280, 280, 70, 70 )
+
+[node name="Tile34" type="Sprite" parent="Row5"]
+position = Vector2( 102.437, -0.0963745 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 280, 350, 70, 70 )
+
+[node name="Tile35" type="Sprite" parent="Row5"]
+position = Vector2( 201.481, -3.1915 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 280, 420, 70, 70 )
+
+[node name="Row6" type="Node2D" parent="."]
+position = Vector2( 5.0466, 548.062 )
+
+[node name="Tile36" type="Sprite" parent="Row6"]
+position = Vector2( -371.956, 1.47018 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 350, 0, 70, 70 )
