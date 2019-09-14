@@ -33,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Env="*res://scripts/globals/Env.gd"
+Vector2f="*res://scripts/globals/Vector2f.gd"
 
 [display]
 
