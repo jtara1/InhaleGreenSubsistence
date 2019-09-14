@@ -14,3 +14,4 @@ scale = Vector2( 0.66, 0.66 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_Baby_body_entered"]
