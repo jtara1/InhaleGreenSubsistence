@@ -12,3 +12,6 @@ func consume(modifiers: Dictionary):
 		self.set(key, value + modifiers[key])
 		
 	emit_signal("consumed", modifiers.keys()) # thi	s could just be override in inheritance, but someone else might want to listen
+	
+func die():
+	print_debug("not implemented")

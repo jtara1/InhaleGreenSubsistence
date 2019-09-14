@@ -1,5 +1,7 @@
 extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
 
+signal animation_finished
+
 export(float) var speed = 300.0
 
 
@@ -35,3 +37,6 @@ func _agent_consumed(attributes_mutated):
 				$CharacterScaling.set_body_scaling(self.body_size)
 			"health":
 				pass # TODO: emit health changed signal for some UI 
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	emit_signal("animation_finished", anim_name)
