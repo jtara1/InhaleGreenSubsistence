@@ -2,8 +2,16 @@ extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
 
 signal animation_finished
 
+export(float) var gravity = 9.8
 export(float) var speed = 300.0
+export(float) var max_speed = 10000
+export(float) var fast_fall = 300
+export(float) var max_fall_speed = 300
+export(float) var max_jump_horizontal_speed = 160
+export(float) var scaling_smoothing = 1
 
+var movement = Vector2()
+var gravity_force = 0
 
 func _ready():
 	self.connect("consumed", self, "_agent_consumed")
@@ -15,18 +23,32 @@ func _physics_process(delta):
 ####################
 # methods
 func move(delta):
-	var movement = Vector2()
+	movement.x += user_input().x * speed * delta
+	clamp(movement.x, -max_speed, max_speed)
 	
-	if Input.is_action_pressed("move_right"):
-		movement += Vector2.RIGHT
-	if Input.is_action_pressed("move_down"):
-		movement += Vector2.DOWN
-	if Input.is_action_pressed("move_left"):
-		movement += Vector2.LEFT
-	if Input.is_action_pressed("move_up"):
-		movement += Vector2.UP
+	if user_input().x == 0:
+		stop_moving()
 		
-	position += movement * speed * delta
+	if is_on_floor():
+		gravity_force = 0
+		print('please')
+	else:
+		gravity_force += gravity * delta
+		movement.y += gravity_force
+		movement.y += user_input().y * fast_fall * delta
+		clamp(movement.y, 0, max_fall_speed)
+		print("skyman")
+	print(is_on_floor())
+	move_and_slide(movement, Vector2(0,-1))
+	
+func user_input():
+	var input = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+	Input.get_action_strength("move_down"))
+	return input
+	
+# TODO have logic for slowly stopping
+func stop_moving():
+	movement.x = 0
 	
 ####################
 # event listeners
