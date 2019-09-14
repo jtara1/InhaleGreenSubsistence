@@ -1,0 +1,2 @@
+extends 'Consumable.gd'
+
