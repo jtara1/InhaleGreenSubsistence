@@ -3,10 +3,10 @@
 [ext_resource path="res://scripts/baby/Baby.gd" type="Script" id=1]
 [ext_resource path="res://scripts/baby/ConsumableBaby.gd" type="Script" id=2]
 [ext_resource path="res://audio/sfx/bird_poo - baby consumed.ogg" type="AudioStream" id=3]
-[ext_resource path="res://game-objects/SlimeSprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game-objects/components/SlimeSprite.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 21.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 18.7524, 16.1221 )
 
 [node name="Baby" type="Area2D"]
 script = ExtResource( 1 )
@@ -22,4 +22,5 @@ stream = ExtResource( 3 )
 position = Vector2( 0, 16 )
 scale = Vector2( 3, 3 )
 [connection signal="body_entered" from="." to="ConsumableBaby" method="_on_Baby_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Baby_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_AudioStreamPlayer2D_finished"]

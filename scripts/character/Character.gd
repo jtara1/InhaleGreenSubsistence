@@ -31,7 +31,6 @@ func move(delta):
 		
 	if is_on_floor():
 		gravity_force = 0
-		print('k')
 	else:
 		gravity_force += gravity * delta
 		movement.y += gravity_force
