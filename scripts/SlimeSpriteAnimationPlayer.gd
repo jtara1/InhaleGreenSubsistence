@@ -9,3 +9,6 @@ func play(anim_name: String = "", custom_blend: float = -1.0, custom_speed: floa
 			.play(anim_name, custom_blend, custom_speed, from_end)
 	else:
 		.play(anim_name, custom_blend, custom_speed, from_end)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	queue("idle")
