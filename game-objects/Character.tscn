@@ -1,11 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/character/Character.gd" type="Script" id=1]
 [ext_resource path="res://scripts/character/CharacterScaling.gd" type="Script" id=2]
 [ext_resource path="res://game-objects/components/SlimeSprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://images/particles/PixelParticle.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 22.2132
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 15.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+angular_velocity = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 7.0
+scale_random = 0.6
+hue_variation = 0.11
+hue_variation_random = 0.4
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -35,5 +49,12 @@ cast_to = Vector2( 0, 0 )
 [node name="HookTimer" type="Timer" parent="."]
 wait_time = 0.35
 one_shot = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0.713463, 18.3127 )
+amount = 24
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 4 )
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="timeout" from="HookTimer" to="." method="_on_HookTimer_timeout"]
