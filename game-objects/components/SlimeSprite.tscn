@@ -15,7 +15,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
 vframes = 20
 hframes = 10
-frame = 5
+frame = 3
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

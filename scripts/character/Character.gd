@@ -8,8 +8,8 @@ export(float) var jump_speed = 500
 export(float) var max_jump_horizontal_speed = 320
 export(float) var scaling_smoothing = 1
 
-onready var player_sprite = $SlimeSprite
-onready var player_animator = $SlimeSprite/AnimationPlayer
+onready var sprite = $SlimeSprite
+onready var animator = $SlimeSprite/AnimationPlayer
 
 var movement = Vector2()
 
@@ -17,13 +17,22 @@ var friction = false
 
 func _ready():
 	self.connect("consumed", self, "_agent_consumed")
+	animator.connect("animation_finished", self, "_on_SlimeSprite_animation_finished")
 
 func _physics_process(delta):
 	move(delta)
 	$CharacterScaling.scale_size(delta)
 
 ####################
-# methods
+# input
+func user_input():
+	return Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("jump")
+	)
+
+####################
+# movement
 func move(delta):
 	movement.y += gravity
 
@@ -38,35 +47,26 @@ func move(delta):
 
 	air_controls()
 
-	print(movement.y)
-
 	movement = move_and_slide(movement, Vector2.UP)
-
-func user_input():
-	var input = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("jump")
-	)
-	return input
 
 func run_right():
 	if !is_on_floor():
 		movement.x = lerp(movement.x, max_jump_horizontal_speed, 0.15)
 	else:
 		movement.x = min(movement.x + speed, max_speed)
-	player_sprite.flip_h = true
-	player_animator.play("move")
+	sprite.flip_h = true
+	animator.play("move")
 
 func run_left():
 	if !is_on_floor():
 		movement.x = lerp(movement.x, -max_jump_horizontal_speed, 0.15)
 	else:
 		movement.x = max(movement.x -speed, -max_speed)
-	player_sprite.flip_h = false
-	player_animator.play("move")
+	sprite.flip_h = false
+	animator.play("move")
 
 func stopped_running():
-	player_animator.play("idle")
+	animator.play("idle")
 	friction = true
 	movement.x = lerp(movement.x, 0, 0.2)
 
@@ -84,11 +84,16 @@ func air_controls():
 
 func during_air_time():
 	if movement.y < 0:
-		player_animator.play("jump")
+		animator.play("jump")
 	else:
-		player_animator.play("fall")
+		animator.play("fall")
 	if friction == true:
 		movement.x = lerp(movement.x, 0, 0.05)
+
+####################
+# health
+func die():
+	animator.play("death")
 
 ####################
 # event listeners
@@ -99,3 +104,8 @@ func _agent_consumed(attributes_mutated):
 				$CharacterScaling.set_body_scaling(self.body_size)
 			"health":
 				pass # TODO: emit health changed signal for some UI
+
+func _on_SlimeSprite_animation_finished(anim_name):
+	match anim_name:
+		"death":
+			queue_free()
