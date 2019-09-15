@@ -27,8 +27,4 @@ drag_margin_v_enabled = false
 
 [node name="JumpTimer" type="Timer" parent="."]
 wait_time = 0.15
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 0, 0 )
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
