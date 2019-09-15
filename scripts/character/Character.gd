@@ -9,9 +9,10 @@ export(float) var fast_fall = 20
 export(float) var jump_speed = 500
 export(float) var max_jump_horizontal_speed = 320
 export(float) var scaling_smoothing = 1
-export(float) var hook_shot_length = 100
+export(float) var hook_shot_length = 200
 export(float) var hook_shot_strength = 50
 
+onready var Vector2f = get_node("/root/Vector2f")
 onready var sprite = $SlimeSprite
 onready var animator = $SlimeSprite/AnimationPlayer
 onready var raycast = $RayCast2D
@@ -21,6 +22,7 @@ var full_jump = false
 var friction = false
 var raycast_direction
 var sprite_direction = Vector2(1,0)
+var using_hookshot = false
 
 ####################
 # core
@@ -57,6 +59,8 @@ func move(delta):
 
 	air_controls()
 	hook_shot()
+	print($HookTimer.time_left)
+	print(using_hookshot)
 #	print(movement)
 	if not is_dead():
 		movement = move_and_slide(movement, Vector2.UP)
@@ -99,10 +103,17 @@ func air_controls():
 func hook_shot():
 	raycast_direction = sprite_direction() * hook_shot_length
 	raycast.cast_to = raycast_direction
+	var init_global_position = self.global_position
+	var distance
 	if Input.is_action_just_pressed("shoot"):
 		# TODO make it so only certain objects are grabbable
 		if raycast.is_colliding():
-			movement = raycast_direction * hook_shot_strength
+			$HookTimer.start()
+			using_hookshot = true
+			distance = init_global_position.distance_to(raycast.get_collision_point())
+
+	if using_hookshot:
+		global_position = Vector2f.lerp(global_position, raycast.get_collision_point(), 0.15)
 			
 func sprite_direction():
 	if sprite.flip_h:
@@ -138,3 +149,7 @@ func _on_SlimeSprite_animation_finished(anim_name):
 
 func _on_JumpTimer_timeout():
 	full_jump = true
+
+
+func _on_HookTimer_timeout():
+	using_hookshot = false

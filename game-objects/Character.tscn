@@ -31,4 +31,9 @@ wait_time = 0.15
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 0 )
+
+[node name="HookTimer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
+[connection signal="timeout" from="HookTimer" to="." method="_on_HookTimer_timeout"]
