@@ -12,7 +12,7 @@ onready var player_sprite = $SlimeSprite
 onready var player_animator = $SlimeSprite/AnimationPlayer
 
 var movement = Vector2()
-
+var full_jump = false
 var friction = false
 
 func _ready():
@@ -37,9 +37,6 @@ func move(delta):
 		stopped_running()
 
 	air_controls()
-
-	print(movement.y)
-
 	movement = move_and_slide(movement, Vector2.UP)
 
 func user_input():
@@ -71,8 +68,15 @@ func stopped_running():
 	movement.x = lerp(movement.x, 0, 0.2)
 
 func air_controls():
-	if user_input().y == -1 and is_on_floor():
-		movement.y = -jump_speed
+	if Input.is_action_just_pressed("jump"):
+		full_jump = false
+		$JumpTimer.start()
+	if Input.is_action_just_released("jump") and is_on_floor():
+		print("HI")
+		if full_jump:
+			movement.y = -jump_speed
+		elif !full_jump:
+			movement.y = -jump_speed/2
 
 	if user_input().y == 1 and !is_on_floor():
 		movement.y += fast_fall
@@ -99,3 +103,7 @@ func _agent_consumed(attributes_mutated):
 				$CharacterScaling.set_body_scaling(self.body_size)
 			"health":
 				pass # TODO: emit health changed signal for some UI
+
+
+func _on_JumpTimer_timeout():
+	full_jump = true
