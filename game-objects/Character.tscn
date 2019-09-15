@@ -27,4 +27,3 @@ drag_margin_v_enabled = false
 
 [node name="JumpTimer" type="Timer" parent="."]
 wait_time = 0.15
-[connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
