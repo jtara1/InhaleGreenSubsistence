@@ -12,7 +12,7 @@ onready var sprite = $SlimeSprite
 onready var animator = $SlimeSprite/AnimationPlayer
 
 var movement = Vector2()
-
+var full_jump = false
 var friction = false
 
 func _ready():
@@ -46,7 +46,6 @@ func move(delta):
 		stopped_running()
 
 	air_controls()
-
 	movement = move_and_slide(movement, Vector2.UP)
 
 func run_right():
@@ -71,8 +70,15 @@ func stopped_running():
 	movement.x = lerp(movement.x, 0, 0.2)
 
 func air_controls():
-	if user_input().y == -1 and is_on_floor():
-		movement.y = -jump_speed
+	if Input.is_action_just_pressed("jump"):
+		full_jump = false
+		$JumpTimer.start()
+	if Input.is_action_just_released("jump") and is_on_floor():
+		print("HI")
+		if full_jump:
+			movement.y = -jump_speed
+		elif !full_jump:
+			movement.y = -jump_speed/2
 
 	if user_input().y == 1 and !is_on_floor():
 		movement.y += fast_fall
@@ -109,3 +115,6 @@ func _on_SlimeSprite_animation_finished(anim_name):
 	match anim_name:
 		"death":
 			queue_free()
+
+func _on_JumpTimer_timeout():
+	full_jump = true
