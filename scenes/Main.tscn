@@ -33,7 +33,7 @@ position = Vector2( 0, 1042.38 )
 
 [node name="Character" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
-position = Vector2( 216, 65.9695 )
+position = Vector2( 661.67, 235.398 )
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 

@@ -1,5 +1,7 @@
 extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
 
+signal character_died
+
 export(float) var gravity = 9.8
 export(float) var speed = 100.0
 export(float) var max_speed = 400
@@ -111,6 +113,7 @@ func _agent_consumed(attributes_mutated):
 func _on_SlimeSprite_animation_finished(anim_name):
 	match anim_name:
 		"death":
+			emit_signal("character_died")
 			queue_free()
 
 func _on_JumpTimer_timeout():
