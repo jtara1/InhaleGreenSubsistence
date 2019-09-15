@@ -27,3 +27,4 @@ anims/jump = ExtResource( 5 )
 anims/roll = ExtResource( 6 )
 anims/shoot = ExtResource( 7 )
 script = ExtResource( 8 )
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_AnimationPlayer_animation_finished"]
