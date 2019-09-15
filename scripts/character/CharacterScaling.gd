@@ -27,4 +27,4 @@ func scale_size(delta):
 		changing_scaling = false # avoid emitting every frame it isn't scaling
 
 func set_body_scaling(scaling_multiplier):
-	target_scale = character.scale * scaling_multiplier
+	target_scale = init_scale * scaling_multiplier
