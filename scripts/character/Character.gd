@@ -1,15 +1,19 @@
 extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
 
 export(float) var gravity = 9.8
-export(float) var speed = 300.0
-export(float) var max_speed = 10000
-export(float) var fast_fall = 300
-export(float) var max_fall_speed = 300
-export(float) var max_jump_horizontal_speed = 160
+export(float) var speed = 100.0
+export(float) var max_speed = 400
+export(float) var fast_fall = 20
+export(float) var jump_speed = 500
+export(float) var max_jump_horizontal_speed = 320
 export(float) var scaling_smoothing = 1
 
+onready var player_sprite = $SlimeSprite
+onready var player_animator = $SlimeSprite/AnimationPlayer
+
 var movement = Vector2()
-var gravity_force = 0
+
+var friction = false
 
 func _ready():
 	self.connect("consumed", self, "_agent_consumed")
@@ -17,39 +21,75 @@ func _ready():
 func _physics_process(delta):
 	move(delta)
 	$CharacterScaling.scale_size(delta)
-	
+
 ####################
 # methods
 func move(delta):
-	var user_input = user_input()
-	
-	movement.x += user_input.x * speed * delta 
-	clamp(movement.x, -max_speed, max_speed)
-	
-	if user_input.x == 0:
-		stop_moving()
-		
-	if is_on_floor():
-		gravity_force = 0
+	movement.y += gravity
+
+	friction = false
+
+	if user_input().x == 1:
+		run_right()
+	elif user_input().x == -1:
+		run_left()
 	else:
-		gravity_force += gravity * delta
-		movement.y += gravity_force
-		movement.y += user_input.y * fast_fall * delta
-		clamp(movement.y, 0, max_fall_speed)
-		
-	move_and_slide(movement, Vector2(0,-1))
-	
+		stopped_running()
+
+	air_controls()
+
+	print(movement.y)
+
+	movement = move_and_slide(movement, Vector2.UP)
+
 func user_input():
 	var input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("jump")
 	)
 	return input
-	
-# TODO have logic for slowly stopping
-func stop_moving():
-	movement.x = 0
-	
+
+func run_right():
+	if !is_on_floor():
+		movement.x = lerp(movement.x, max_jump_horizontal_speed, 0.15)
+	else:
+		movement.x = min(movement.x + speed, max_speed)
+	player_sprite.flip_h = true
+	player_animator.play("move")
+
+func run_left():
+	if !is_on_floor():
+		movement.x = lerp(movement.x, -max_jump_horizontal_speed, 0.15)
+	else:
+		movement.x = max(movement.x -speed, -max_speed)
+	player_sprite.flip_h = false
+	player_animator.play("move")
+
+func stopped_running():
+	player_animator.play("idle")
+	friction = true
+	movement.x = lerp(movement.x, 0, 0.2)
+
+func air_controls():
+	if user_input().y == -1 and is_on_floor():
+		movement.y = -jump_speed
+
+	if user_input().y == 1 and !is_on_floor():
+		movement.y += fast_fall
+
+	if friction == true:
+		movement.x = lerp(movement.x, 0, 0.2)
+	if !is_on_floor():
+		during_air_time()
+
+func during_air_time():
+	if movement.y < 0:
+		player_animator.play("jump")
+	else:
+		player_animator.play("fall")
+	if friction == true:
+		movement.x = lerp(movement.x, 0, 0.05)
+
 ####################
 # event listeners
 func _agent_consumed(attributes_mutated):
@@ -58,4 +98,4 @@ func _agent_consumed(attributes_mutated):
 			"body_size":
 				$CharacterScaling.set_body_scaling(self.body_size)
 			"health":
-				pass # TODO: emit health changed signal for some UI 
+				pass # TODO: emit health changed signal for some UI
