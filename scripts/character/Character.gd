@@ -77,6 +77,7 @@ func air_controls():
 		movement.y = -jump_speed / 2
 		$JumpTimer.start()
 		full_jump = false
+		animator.play("jump", -1, 2.2) # x2.2 speed
 	elif Input.is_action_pressed("jump"):
 		if ($JumpTimer.time_left <= $JumpTimer.wait_time / 5) and not full_jump:
 			full_jump = true
