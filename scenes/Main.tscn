@@ -32,7 +32,7 @@ tile_data = PoolIntArray( -196583, 19, 0, -196582, 31, 0, -196581, 31, 0, -19658
 position = Vector2( 0, 1042.38 )
 
 [node name="RespawnPoint" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1817.62, -317.498 )
+position = Vector2( 2010.56, 48.786 )
 
 [node name="Character" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
