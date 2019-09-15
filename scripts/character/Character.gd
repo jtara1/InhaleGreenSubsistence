@@ -34,18 +34,19 @@ func user_input():
 ####################
 # movement
 func move(delta):
-	movement.y += gravity
-
-	friction = false
-
-	if user_input().x == 1:
-		run_right()
-	elif user_input().x == -1:
-		run_left()
-	else:
-		stopped_running()
-
-	air_controls()
+	if not dead:
+		movement.y += gravity
+	
+		friction = false
+	
+		if user_input().x == 1:
+			run_right()
+		elif user_input().x == -1:
+			run_left()
+		else:
+			stopped_running()
+	
+		air_controls()
 	movement = move_and_slide(movement, Vector2.UP)
 
 func run_right():
@@ -74,7 +75,6 @@ func air_controls():
 		full_jump = false
 		$JumpTimer.start()
 	if Input.is_action_just_released("jump") and is_on_floor():
-		print("HI")
 		if full_jump:
 			movement.y = -jump_speed
 		elif !full_jump:
@@ -98,7 +98,8 @@ func during_air_time():
 
 ####################
 # health
-func die():
+func is_dead():
+	dead = true
 	animator.play("death")
 
 ####################
