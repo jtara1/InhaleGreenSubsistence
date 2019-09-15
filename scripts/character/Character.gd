@@ -1,7 +1,5 @@
 extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
 
-signal animation_finished
-
 export(float) var gravity = 9.8
 export(float) var speed = 300.0
 export(float) var max_speed = 10000
@@ -23,24 +21,30 @@ func _physics_process(delta):
 ####################
 # methods
 func move(delta):
-	movement.x += user_input().x * speed * delta
+	var user_input = user_input()
+	
+	movement.x += user_input.x * speed * delta 
 	clamp(movement.x, -max_speed, max_speed)
 	
-	if user_input().x == 0:
+	if user_input.x == 0:
 		stop_moving()
 		
 	if is_on_floor():
 		gravity_force = 0
+		print('k')
 	else:
 		gravity_force += gravity * delta
 		movement.y += gravity_force
-		movement.y += user_input().y * fast_fall * delta
+		movement.y += user_input.y * fast_fall * delta
 		clamp(movement.y, 0, max_fall_speed)
+		
 	move_and_slide(movement, Vector2(0,-1))
 	
 func user_input():
-	var input = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-	Input.get_action_strength("move_down"))
+	var input = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("jump")
+	)
 	return input
 	
 # TODO have logic for slowly stopping
@@ -56,6 +60,3 @@ func _agent_consumed(attributes_mutated):
 				$CharacterScaling.set_body_scaling(self.body_size)
 			"health":
 				pass # TODO: emit health changed signal for some UI 
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	emit_signal("animation_finished", anim_name)
