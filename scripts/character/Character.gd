@@ -35,20 +35,19 @@ func user_input():
 ####################
 # movement
 func move(delta):
-	movement.y += gravity
-	var user_input = user_input()
+	if not dead:
+		movement.y += gravity
 
-	friction = false
+		friction = false
 
-	if user_input.x == 1:
-		run_right()
-	elif user_input.x == -1:
-		run_left()
-	else:
-		stopped_running()
+		if user_input().x == 1:
+			run_right()
+		elif user_input().x == -1:
+			run_left()
+		else:
+			stopped_running()
 
-	air_controls()
-#	print(movement)
+		air_controls()
 	movement = move_and_slide(movement, Vector2.UP)
 
 func run_right():
@@ -100,7 +99,8 @@ func during_air_time():
 
 ####################
 # health
-func die():
+func is_dead():
+	dead = true
 	animator.play("death")
 
 ####################

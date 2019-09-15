@@ -5,6 +5,7 @@ signal consumed
 
 var health: int = 10
 var body_size: float = 1.0 # multiplier to scale the actual size
+var dead = false
 
 func consume(modifiers: Dictionary):
 	for key in modifiers.keys():
@@ -13,5 +14,5 @@ func consume(modifiers: Dictionary):
 		
 	emit_signal("consumed", modifiers.keys()) # thi	s could just be override in inheritance, but someone else might want to listen
 	
-func die():
+func dead():
 	print_debug("not implemented")
