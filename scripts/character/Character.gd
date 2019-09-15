@@ -16,6 +16,8 @@ var full_jump = false
 var friction = false
 
 
+####################
+# core
 func _ready():
 	self.connect("consumed", self, "_agent_consumed")
 	animator.connect("animation_finished", self, "_on_SlimeSprite_animation_finished")
@@ -35,20 +37,22 @@ func user_input():
 ####################
 # movement
 func move(delta):
-	if not dead:
-		movement.y += gravity
+	movement.y += gravity
+	var user_input = user_input()
 
-		friction = false
+	friction = false
 
-		if user_input().x == 1:
-			run_right()
-		elif user_input().x == -1:
-			run_left()
-		else:
-			stopped_running()
+	if user_input.x == 1:
+		run_right()
+	elif user_input.x == -1:
+		run_left()
+	else:
+		stopped_running()
 
-		air_controls()
-	movement = move_and_slide(movement, Vector2.UP)
+	air_controls()
+#	print(movement)
+	if not is_dead():
+		movement = move_and_slide(movement, Vector2.UP)
 
 func run_right():
 	if !is_on_floor():
@@ -56,7 +60,6 @@ func run_right():
 	else:
 		movement.x = min(movement.x + speed, max_speed)
 	sprite.flip_h = true
-	animator.play("move")
 
 func run_left():
 	if !is_on_floor():
@@ -64,10 +67,8 @@ func run_left():
 	else:
 		movement.x = max(movement.x -speed, -max_speed)
 	sprite.flip_h = false
-	animator.play("move")
 
 func stopped_running():
-	animator.play("idle")
 	friction = true
 	movement.x = lerp(movement.x, 0, 0.2)
 
@@ -79,29 +80,22 @@ func air_controls():
 	elif Input.is_action_pressed("jump"):
 		if ($JumpTimer.time_left <= $JumpTimer.wait_time / 5) and not full_jump:
 			full_jump = true
-			movement.y = -jump_speed / 1
+			movement.y = -jump_speed
 
-	if user_input().y == 1 and !is_on_floor():
+	if user_input().y == 1:
 		movement.y += fast_fall
 
 	if friction:
-		movement.x = lerp(movement.x, 0, 0.2)
-	if !is_on_floor():
-		during_air_time()
-
-func during_air_time():
-	if movement.y < 0:
-		animator.play("jump")
-	else:
-		animator.play("fall")
-	if friction:
-		movement.x = lerp(movement.x, 0, 0.05)
+		movement.x = lerp(movement.x, 0, 0.2 if is_on_floor() else 0.05)
 
 ####################
 # health
-func is_dead():
-	dead = true
+func die():
+	.die() # set dead = true
 	animator.play("death")
+	
+func is_dead():
+	.is_dead()
 
 ####################
 # event listeners

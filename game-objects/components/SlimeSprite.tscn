@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://images/character/slime spritesheet calciumtrice.png" type="Texture" id=1]
 [ext_resource path="res://scripts/SlimeSprite.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://animations/slime/jump.anim" type="Animation" id=5]
 [ext_resource path="res://animations/slime/roll.anim" type="Animation" id=6]
 [ext_resource path="res://animations/slime/shoot.anim" type="Animation" id=7]
+[ext_resource path="res://scripts/SlimeSpriteAnimationPlayer.gd" type="Script" id=8]
 
 [node name="SlimeSprite" type="Sprite"]
 position = Vector2( 0, 32 )
@@ -15,7 +16,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
 vframes = 20
 hframes = 10
-frame = 7
+frame = 1
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -25,4 +26,4 @@ anims/idle = ExtResource( 4 )
 anims/jump = ExtResource( 5 )
 anims/roll = ExtResource( 6 )
 anims/shoot = ExtResource( 7 )
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+script = ExtResource( 8 )

@@ -14,5 +14,8 @@ func consume(modifiers: Dictionary):
 		
 	emit_signal("consumed", modifiers.keys()) # thi	s could just be override in inheritance, but someone else might want to listen
 	
-func dead():
-	print_debug("not implemented")
+func die():
+	dead = true
+	
+func is_dead():
+	return dead
