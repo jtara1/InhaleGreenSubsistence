@@ -9,14 +9,18 @@ export(float) var fast_fall = 20
 export(float) var jump_speed = 500
 export(float) var max_jump_horizontal_speed = 320
 export(float) var scaling_smoothing = 1
+export(float) var hook_shot_length = 100
+export(float) var hook_shot_strength = 50
 
 onready var sprite = $SlimeSprite
 onready var animator = $SlimeSprite/AnimationPlayer
+onready var raycast = $RayCast2D
 
 var movement = Vector2()
 var full_jump = false
 var friction = false
-
+var raycast_direction
+var sprite_direction = Vector2(1,0)
 
 ####################
 # core
@@ -52,6 +56,7 @@ func move(delta):
 		stopped_running()
 
 	air_controls()
+	hook_shot()
 #	print(movement)
 	if not is_dead():
 		movement = move_and_slide(movement, Vector2.UP)
@@ -90,6 +95,21 @@ func air_controls():
 
 	if friction:
 		movement.x = lerp(movement.x, 0, 0.2 if is_on_floor() else 0.05)
+		
+func hook_shot():
+	raycast_direction = sprite_direction() * hook_shot_length
+	raycast.cast_to = raycast_direction
+	if Input.is_action_just_pressed("shoot"):
+		# TODO make it so only certain objects are grabbable
+		if raycast.is_colliding():
+			movement = raycast_direction * hook_shot_strength
+			
+func sprite_direction():
+	if sprite.flip_h:
+		sprite_direction = Vector2(1,0)
+	elif not sprite.flip_h:
+		sprite_direction = Vector2(-1,0)
+	return sprite_direction
 
 ####################
 # health
