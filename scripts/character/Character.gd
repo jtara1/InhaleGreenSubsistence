@@ -15,6 +15,7 @@ var movement = Vector2()
 var full_jump = false
 var friction = false
 
+
 func _ready():
 	self.connect("consumed", self, "_agent_consumed")
 	animator.connect("animation_finished", self, "_on_SlimeSprite_animation_finished")
@@ -35,17 +36,19 @@ func user_input():
 # movement
 func move(delta):
 	movement.y += gravity
+	var user_input = user_input()
 
 	friction = false
 
-	if user_input().x == 1:
+	if user_input.x == 1:
 		run_right()
-	elif user_input().x == -1:
+	elif user_input.x == -1:
 		run_left()
 	else:
 		stopped_running()
 
 	air_controls()
+#	print(movement)
 	movement = move_and_slide(movement, Vector2.UP)
 
 func run_right():
@@ -70,20 +73,19 @@ func stopped_running():
 	movement.x = lerp(movement.x, 0, 0.2)
 
 func air_controls():
-	if Input.is_action_just_pressed("jump"):
-		full_jump = false
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		movement.y = -jump_speed / 2
 		$JumpTimer.start()
-	if Input.is_action_just_released("jump") and is_on_floor():
-		print("HI")
-		if full_jump:
-			movement.y = -jump_speed
-		elif !full_jump:
-			movement.y = -jump_speed/2
+		full_jump = false
+	elif Input.is_action_pressed("jump"):
+		if ($JumpTimer.time_left <= $JumpTimer.wait_time / 5) and not full_jump:
+			full_jump = true
+			movement.y = -jump_speed / 1
 
 	if user_input().y == 1 and !is_on_floor():
 		movement.y += fast_fall
 
-	if friction == true:
+	if friction:
 		movement.x = lerp(movement.x, 0, 0.2)
 	if !is_on_floor():
 		during_air_time()
@@ -93,7 +95,7 @@ func during_air_time():
 		animator.play("jump")
 	else:
 		animator.play("fall")
-	if friction == true:
+	if friction:
 		movement.x = lerp(movement.x, 0, 0.05)
 
 ####################
