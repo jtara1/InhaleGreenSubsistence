@@ -1,5 +1,7 @@
 extends Node2D
 
+export(bool) var is_current_spawn_point = false
+
 const Character = preload("res://game-objects/Character.tscn")
 
 onready var Env = get_node("/root/Env")
@@ -28,4 +30,5 @@ func listen_to_character_dying_event():
 	Env.get_character().connect("character_died", self, "_on_Character_character_died")
 
 func _on_Character_character_died():
-	spawn_character()
+	if is_current_spawn_point:
+		spawn_character()

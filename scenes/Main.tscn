@@ -33,6 +33,7 @@ position = Vector2( 0, 1042.38 )
 
 [node name="RespawnPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2010.56, 48.786 )
+is_current_spawn_point = true
 
 [node name="Character" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
