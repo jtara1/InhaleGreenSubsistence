@@ -1,3 +1,5 @@
+# my ignores
+bin/
 
 # Godot-specific ignores
 .import/
