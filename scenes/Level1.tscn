@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=1]
 [ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://game-objects/Baby.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/components/killzones/Sawblade.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/components/killzones/Flame.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=8]
 
 [node name="Level1" type="Node2D"]
 
@@ -32,8 +33,7 @@ tile_data = PoolIntArray( -131074, 5, 0, -131073, 5, 0, -196608, 5, 0, -196607, 
 position = Vector2( 676.653, 846.813 )
 
 [node name="Character" parent="." instance=ExtResource( 4 )]
-position = Vector2( 5195.66, 558.545 )
-init_body_size_multiplier = 2.0
+position = Vector2( 697.843, 558.545 )
 
 [node name="Baby" parent="." instance=ExtResource( 5 )]
 position = Vector2( 4499.68, 435.975 )
@@ -55,3 +55,8 @@ scale = Vector2( 15.3676, 15.3676 )
 
 [node name="Killzone4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4784.68, 519.267 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -20.0
+autoplay = true
