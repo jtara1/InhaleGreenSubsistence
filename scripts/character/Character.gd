@@ -29,7 +29,6 @@ var sprite_direction = Vector2(1,0)
 var using_hookshot = false
 var hookshot_coolingdown = false
 var wall_clinging = false
-#var can_jump = false
 var target = Vector2()
 var user_input = Vector2()
 
@@ -180,9 +179,3 @@ func _on_HookDelayTimer_timeout():
 func _on_HookTravelTimer_timeout():
 	using_hookshot = false
 	movement.y = 0
-#	can_jump = true
-#	$GraceFallTimer.start()
-
-#
-#func _on_GraceFallTimer_timeout():
-#	can_jump = false
