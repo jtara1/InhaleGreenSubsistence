@@ -9,6 +9,8 @@ export(float) var max_speed = 400
 export(float) var fast_fall = 20
 export(float) var jump_speed = 500
 export(float) var max_jump_horizontal_speed = 320
+export(float) var wall_slide_speed = 35
+export(float) var wall_jump_x_force = 700
 export(float) var scaling_smoothing = 1
 export(float) var hook_shot_length = 200
 export(float) var hook_shot_strength = 50
@@ -25,6 +27,10 @@ var friction = false
 var raycast_direction
 var sprite_direction = Vector2(1,0)
 var using_hookshot = false
+var hookshot_coolingdown = false
+var wall_clinging = false
+var target = Vector2()
+var user_input = Vector2()
 
 ####################
 # core
@@ -51,20 +57,19 @@ func user_input():
 ####################
 # movement
 func move(delta):
-	if not using_hookshot:
-		movement.y += gravity
-		var user_input = user_input()
+	movement.y += gravity
+	var user_input = user_input()
+
+	friction = false
+
+	if user_input.x == 1:
+		run_right()
+	elif user_input.x == -1:
+		run_left()
+	else:
+		stopped_running()
 	
-		friction = false
-	
-		if user_input.x == 1:
-			run_right()
-		elif user_input.x == -1:
-			run_left()
-		else:
-			stopped_running()
-	
-		air_controls()
+	air_controls()
 	hook_shot()
 	
 	if not is_dead():
@@ -93,7 +98,7 @@ func stopped_running():
 	movement.x = lerp(movement.x, 0, 0.2)
 
 func air_controls():
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or wall_clinging):
 		movement.y = -jump_speed / 2
 		$JumpTimer.start()
 		full_jump = false
@@ -108,26 +113,34 @@ func air_controls():
 
 	if friction:
 		movement.x = lerp(movement.x, 0, 0.2 if is_on_floor() else 0.05)
+		
+	if is_on_wall():
+		if Input.is_action_just_pressed("jump"):
+			movement = Vector2(-sprite_direction.x * wall_jump_x_force,-jump_speed)
+		else:
+			movement.y = wall_slide_speed
+			wall_clinging = true
+			$ClingingOnWallTimer.start()
 
 ####################
 # hookshot
 func hook_shot():
 	raycast_direction = sprite_direction() * hook_shot_length
 	raycast.cast_to = raycast_direction
-	var init_global_position = self.global_position
-	var distance
-	# TODO add timer for shooting hook so it can't be spammed repeatedly
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and not hookshot_coolingdown:
 		# TODO make it so only certain objects are grabbable
 		if raycast.is_colliding():
 			# TODO create new animation for hooking onto wall
+			target = raycast.get_collision_point()
 			animator.play("shoot", -1, 5)
-			$HookTimer.start()
+			$HookTravelTimer.start()
+			$HookDelayTimer.start()
 			using_hookshot = true
-			distance = init_global_position.distance_to(raycast.get_collision_point())
+			hookshot_coolingdown = true
+			
 
 	if using_hookshot:
-		global_position = Vector2f.lerp(global_position, raycast.get_collision_point(), 0.15)
+		global_position = Vector2f.lerp(global_position, target, 0.15)
 			
 func sprite_direction():
 	sprite_direction = user_input()
@@ -165,5 +178,13 @@ func _on_SlimeSprite_animation_finished(anim_name):
 func _on_JumpTimer_timeout():
 	full_jump = true
 
-func _on_HookTimer_timeout():
+
+func _on_HookDelayTimer_timeout():
+	hookshot_coolingdown = false
+
+
+func _on_HookTravelTimer_timeout():
 	using_hookshot = false
+
+func _on_ClingingOnWallTimer_timeout():
+	wall_clinging = false
