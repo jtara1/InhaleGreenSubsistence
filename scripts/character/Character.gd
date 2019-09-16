@@ -1,4 +1,5 @@
 extends "res://scripts/agent/Agent.gd" # extends KinematicBody2D
+class_name Character
 
 signal character_died
 
