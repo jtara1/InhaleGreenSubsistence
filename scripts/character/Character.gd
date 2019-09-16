@@ -97,8 +97,9 @@ func stopped_running():
 	friction = true
 	movement.x = lerp(movement.x, 0, 0.2)
 
+# TODO add a generic grace period when falling to jump
 func air_controls():
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or wall_clinging):
+	if Input.is_action_just_pressed("jump") and (is_on_floor()):
 		movement.y = -jump_speed / 2
 		$JumpTimer.start()
 		full_jump = false
@@ -114,16 +115,17 @@ func air_controls():
 	if friction:
 		movement.x = lerp(movement.x, 0, 0.2 if is_on_floor() else 0.05)
 		
-	if is_on_wall():
-		if Input.is_action_just_pressed("jump"):
-			movement = Vector2(-sprite_direction.x * wall_jump_x_force,-jump_speed)
-		else:
-			movement.y = wall_slide_speed
-			wall_clinging = true
-			$ClingingOnWallTimer.start()
+#	if is_on_wall():
+#		if Input.is_action_just_pressed("jump"):
+#			movement = Vector2(-sprite_direction.x * wall_jump_x_force,-jump_speed/2)
+#		else:
+#			movement.y = wall_slide_speed
+#			wall_clinging = true
+#			$ClingingOnWallTimer.start()
 
 ####################
 # hookshot
+# TODO modify gravity so it's not insane when jumping around a bit. Maybe lower the cooldown time
 func hook_shot():
 	raycast_direction = sprite_direction() * hook_shot_length
 	raycast.cast_to = raycast_direction
@@ -186,5 +188,5 @@ func _on_HookDelayTimer_timeout():
 func _on_HookTravelTimer_timeout():
 	using_hookshot = false
 
-func _on_ClingingOnWallTimer_timeout():
-	wall_clinging = false
+#func _on_ClingingOnWallTimer_timeout():
+#	wall_clinging = false
