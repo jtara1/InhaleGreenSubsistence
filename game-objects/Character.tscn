@@ -46,8 +46,16 @@ wait_time = 0.15
 enabled = true
 cast_to = Vector2( 0, 0 )
 
-[node name="HookTimer" type="Timer" parent="."]
-wait_time = 0.35
+[node name="HookTravelTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="HookDelayTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="ClingingOnWallTimer" type="Timer" parent="."]
+wait_time = 0.15
 one_shot = true
 
 [node name="Particles2D" type="Particles2D" parent="."]
@@ -60,4 +68,6 @@ texture = ExtResource( 4 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
-[connection signal="timeout" from="HookTimer" to="." method="_on_HookTimer_timeout"]
+[connection signal="timeout" from="HookTravelTimer" to="." method="_on_HookTravelTimer_timeout"]
+[connection signal="timeout" from="HookDelayTimer" to="." method="_on_HookDelayTimer_timeout"]
+[connection signal="timeout" from="ClingingOnWallTimer" to="." method="_on_ClingingOnWallTimer_timeout"]
