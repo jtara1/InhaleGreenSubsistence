@@ -70,6 +70,8 @@ func run_right():
 		movement.x = lerp(movement.x, max_jump_horizontal_speed, 0.15)
 	else:
 		movement.x = min(movement.x + speed, max_speed)
+		animator.play("roll", -1, 3.3)
+				
 	sprite.flip_h = true
 
 func run_left():
@@ -77,6 +79,8 @@ func run_left():
 		movement.x = lerp(movement.x, -max_jump_horizontal_speed, 0.15)
 	else:
 		movement.x = max(movement.x -speed, -max_speed)
+		animator.play("roll", -1, 3.3)
+		
 	sprite.flip_h = false
 
 func stopped_running():
