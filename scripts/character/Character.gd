@@ -59,9 +59,6 @@ func move(delta):
 
 	air_controls()
 	hook_shot()
-	print($HookTimer.time_left)
-	print(using_hookshot)
-#	print(movement)
 	if not is_dead():
 		movement = move_and_slide(movement, Vector2.UP)
 
@@ -112,6 +109,8 @@ func hook_shot():
 	if Input.is_action_just_pressed("shoot"):
 		# TODO make it so only certain objects are grabbable
 		if raycast.is_colliding():
+			# TODO create new animation for hooking onto wall
+			animator.play("shoot", -1, 5)
 			$HookTimer.start()
 			using_hookshot = true
 			distance = init_global_position.distance_to(raycast.get_collision_point())
