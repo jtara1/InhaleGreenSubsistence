@@ -39,7 +39,7 @@ func _physics_process(delta):
 func user_input():
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("jump")
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
 
 ####################
@@ -59,6 +59,7 @@ func move(delta):
 
 	air_controls()
 	hook_shot()
+	print(raycast.cast_to)
 	if not is_dead():
 		movement = move_and_slide(movement, Vector2.UP)
 
@@ -119,11 +120,10 @@ func hook_shot():
 		global_position = Vector2f.lerp(global_position, raycast.get_collision_point(), 0.15)
 			
 func sprite_direction():
-	if sprite.flip_h:
-		sprite_direction = Vector2(1,0)
-	elif not sprite.flip_h:
-		sprite_direction = Vector2(-1,0)
-	return sprite_direction
+	sprite_direction = user_input()
+	if sprite_direction.y > 0:
+		sprite_direction.y = 0
+	return sprite_direction.normalized()
 
 ####################
 # health
