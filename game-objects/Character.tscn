@@ -57,5 +57,7 @@ amount = 24
 local_coords = false
 process_material = SubResource( 2 )
 texture = ExtResource( 4 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="timeout" from="HookTimer" to="." method="_on_HookTimer_timeout"]
