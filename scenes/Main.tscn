@@ -52,5 +52,6 @@ position = Vector2( 1573.71, 251 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -12.0
 autoplay = true
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
