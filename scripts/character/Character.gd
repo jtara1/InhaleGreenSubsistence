@@ -61,7 +61,7 @@ func move(delta):
 	
 		air_controls()
 	hook_shot()
-	print(raycast.cast_to)
+	
 	if not is_dead():
 		movement = move_and_slide(movement, Vector2.UP)
 
@@ -103,7 +103,9 @@ func air_controls():
 
 	if friction:
 		movement.x = lerp(movement.x, 0, 0.2 if is_on_floor() else 0.05)
-		
+
+####################
+# hookshot
 func hook_shot():
 	raycast_direction = sprite_direction() * hook_shot_length
 	raycast.cast_to = raycast_direction
@@ -128,9 +130,9 @@ func sprite_direction():
 		sprite_direction.y = 0
 	elif sprite_direction == Vector2.ZERO:
 		if sprite.flip_h:
-			sprite_direction = Vector2(1,0)
+			sprite_direction = Vector2(1, 0)
 		else:
-			sprite_direction = Vector2(-1,0)
+			sprite_direction = Vector2(-1, 0)
 	return sprite_direction.normalized()
 
 ####################
@@ -138,9 +140,6 @@ func sprite_direction():
 func die():
 	.die() # set dead = true
 	animator.play("death")
-	
-func is_dead():
-	.is_dead()
 
 ####################
 # event listeners
@@ -160,7 +159,6 @@ func _on_SlimeSprite_animation_finished(anim_name):
 
 func _on_JumpTimer_timeout():
 	full_jump = true
-
 
 func _on_HookTimer_timeout():
 	using_hookshot = false
