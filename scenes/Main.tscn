@@ -31,7 +31,7 @@ tile_data = PoolIntArray( -196583, 19, 0, -196582, 31, 0, -196581, 31, 0, -19658
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
-position = Vector2( 107.496, 235.398 )
+position = Vector2( 2014.56, 83.9452 )
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 
