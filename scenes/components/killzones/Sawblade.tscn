@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/components/killzones/Killzone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://images/Staryu - cropped.png" type="Texture" id=2]
+[ext_resource path="res://animations/killzones/rotate.anim" type="Animation" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.79892
+
+[node name="Killzone" instance=ExtResource( 1 )]
+scale = Vector2( 15.9212, 15.9212 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2( 0.104174, 0.104174 )
+texture = ExtResource( 2 )
+vframes = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+autoplay = "rotate"
+anims/rotate = ExtResource( 3 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/small fire sprite red (1).png-b6a435419e3f27be1357879c71c0e8fa.stex"
+path="res://.import/Staryu - cropped.png-a3d616d3752d37f52d635e3c666f7791.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/small fire sprite red (1).png"
-dest_files=[ "res://.import/small fire sprite red (1).png-b6a435419e3f27be1357879c71c0e8fa.stex" ]
+source_file="res://images/Staryu - cropped.png"
+dest_files=[ "res://.import/Staryu - cropped.png-a3d616d3752d37f52d635e3c666f7791.stex" ]
 
 [params]
 
