@@ -48,14 +48,14 @@ enabled = true
 cast_to = Vector2( 0, 0 )
 
 [node name="HookTravelTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.6
 one_shot = true
 
 [node name="HookDelayTimer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
 
-[node name="ClingingOnWallTimer" type="Timer" parent="."]
+[node name="GraceFallTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
 
@@ -71,4 +71,4 @@ texture = ExtResource( 4 )
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="timeout" from="HookTravelTimer" to="." method="_on_HookTravelTimer_timeout"]
 [connection signal="timeout" from="HookDelayTimer" to="." method="_on_HookDelayTimer_timeout"]
-[connection signal="timeout" from="ClingingOnWallTimer" to="." method="_on_ClingingOnWallTimer_timeout"]
+[connection signal="timeout" from="GraceFallTimer" to="." method="_on_GraceFallTimer_timeout"]
