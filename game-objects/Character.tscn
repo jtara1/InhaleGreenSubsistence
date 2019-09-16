@@ -52,6 +52,7 @@ one_shot = true
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 0.713463, 18.3127 )
+z_index = -1
 amount = 24
 local_coords = false
 process_material = SubResource( 2 )
