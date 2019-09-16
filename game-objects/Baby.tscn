@@ -21,6 +21,6 @@ stream = ExtResource( 3 )
 [node name="SlimeSprite" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 16 )
 scale = Vector2( 3, 3 )
-[connection signal="body_entered" from="." to="ConsumableBaby" method="_on_Baby_body_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Baby_body_entered"]
+[connection signal="body_entered" from="." to="ConsumableBaby" method="_on_Baby_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_AudioStreamPlayer2D_finished"]
