@@ -46,19 +46,20 @@ func user_input():
 ####################
 # movement
 func move(delta):
-	movement.y += gravity
-	var user_input = user_input()
-
-	friction = false
-
-	if user_input.x == 1:
-		run_right()
-	elif user_input.x == -1:
-		run_left()
-	else:
-		stopped_running()
-
-	air_controls()
+	if not using_hookshot:
+		movement.y += gravity
+		var user_input = user_input()
+	
+		friction = false
+	
+		if user_input.x == 1:
+			run_right()
+		elif user_input.x == -1:
+			run_left()
+		else:
+			stopped_running()
+	
+		air_controls()
 	hook_shot()
 	print(raycast.cast_to)
 	if not is_dead():
@@ -108,6 +109,7 @@ func hook_shot():
 	raycast.cast_to = raycast_direction
 	var init_global_position = self.global_position
 	var distance
+	# TODO add timer for shooting hook so it can't be spammed repeatedly
 	if Input.is_action_just_pressed("shoot"):
 		# TODO make it so only certain objects are grabbable
 		if raycast.is_colliding():
@@ -124,6 +126,11 @@ func sprite_direction():
 	sprite_direction = user_input()
 	if sprite_direction.y > 0:
 		sprite_direction.y = 0
+	elif sprite_direction == Vector2.ZERO:
+		if sprite.flip_h:
+			sprite_direction = Vector2(1,0)
+		else:
+			sprite_direction = Vector2(-1,0)
 	return sprite_direction.normalized()
 
 ####################
