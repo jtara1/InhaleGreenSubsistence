@@ -3,6 +3,7 @@ extends Node2D
 const group_name = "RespawnPoint"
 
 export(bool) var is_current_spawn_point = false
+export(bool) var flip_horizontally = false
 
 const CharacterNode = preload("res://game-objects/Character.tscn")
 
@@ -14,6 +15,8 @@ onready var root = $"../"
 func _ready():
 	listen_to_character_dying_event()
 	add_to_group(group_name)
+	
+	$Sprite.flip_h = flip_horizontally
 
 func spawn_character():
 	# clear the dying char name

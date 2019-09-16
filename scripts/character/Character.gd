@@ -12,6 +12,7 @@ export(float) var max_jump_horizontal_speed = 320
 export(float) var scaling_smoothing = 1
 export(float) var hook_shot_length = 200
 export(float) var hook_shot_strength = 50
+export(float) var init_body_size_multiplier = -1 # let inherited value from Agent decide
 
 onready var Vector2f = get_node("/root/Vector2f")
 onready var sprite = $SlimeSprite
@@ -30,6 +31,10 @@ var using_hookshot = false
 func _ready():
 	self.connect("consumed", self, "_agent_consumed")
 	animator.connect("animation_finished", self, "_on_SlimeSprite_animation_finished")
+	
+	if init_body_size_multiplier != -1:
+		body_size = init_body_size_multiplier
+		$CharacterScaling.set_body_scaling(body_size)
 
 func _physics_process(delta):
 	move(delta)

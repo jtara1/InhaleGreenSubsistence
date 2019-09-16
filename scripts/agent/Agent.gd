@@ -12,7 +12,7 @@ func consume(modifiers: Dictionary):
 		var value = self.get(key)
 		self.set(key, value + modifiers[key])
 		
-	emit_signal("consumed", modifiers.keys()) # thi	s could just be override in inheritance, but someone else might want to listen
+	emit_signal("consumed", modifiers.keys()) # this could just be override in inheritance, but someone else might want to listen
 	
 func die():
 	dead = true

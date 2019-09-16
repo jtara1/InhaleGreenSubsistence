@@ -1,6 +1,6 @@
 extends "res://scripts/Consumable.gd" # extends KinematicBody2D
 
-export(float) var growth_increment_for_multiplier = 0.5
+export(float) var growth_increment_for_multiplier = 1
 
 onready var baby = $"../"
 
