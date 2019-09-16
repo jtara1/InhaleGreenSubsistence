@@ -5,4 +5,5 @@
 | bird_poo - slime splat | https://opengameart.org/content/flap-splat-poo-yo-frankie |
 | flags.png | https://opengameart.org/content/flags-0 |
 | bg music | https://opengameart.org/content/4-chiptunes-adventure |
-| small fire sprite red | https://opengameart.org/content/small-flame-pack-0 |
+| flame.png (nice 3d real animated) | https://opengameart.org/content/animated-flame-texture |
+| sawblade (staryu-starmie) | https://opengameart.org/content/staryu-starmie |
