@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ 0.0, 0.99 ]
 }
 
-[node name="Main" type="Node2D"]
+[node name="Lv1" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -106,7 +106,7 @@ position = Vector2( 5411.89, -169.106 )
 curve = ExtResource( 9 )
 
 [node name="PathFollow2D" parent="Killzone3/Path2D" index="0"]
-position = Vector2( 14.3876, 0.00361606 )
+position = Vector2( 14.3875, 0.00361606 )
 offset = 14.3611
 
 [node name="Killzone4" parent="." instance=ExtResource( 8 )]
@@ -119,7 +119,7 @@ anims/rotate = SubResource( 1 )
 curve = ExtResource( 9 )
 
 [node name="PathFollow2D" parent="Killzone4/Path2D" index="0"]
-position = Vector2( 14.3876, 0.00361606 )
+position = Vector2( 14.3875, 0.00361606 )
 offset = 14.3611
 
 [node name="AnimationPlayer" parent="Killzone4" index="3"]
