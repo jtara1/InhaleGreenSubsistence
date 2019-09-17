@@ -29,12 +29,12 @@ func spawn_character():
 	
 	# update the new char position & name
 	character.position = $PointToSpawnAt.global_position
+	root.add_child(character) # add to scene tree
+	
 	character.respawned({"body_size": dead_character.body_size})
 	character.set_name("Character")
 	
 	listen_to_character_dying_event() # reconnect
-	
-	root.add_child(character) # add to scene tree
 
 func listen_to_character_dying_event():
 	Env.get_character().connect("character_died", self, "_on_Character_character_died")

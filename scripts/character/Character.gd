@@ -40,7 +40,8 @@ func _ready():
 	
 	if init_body_size_multiplier != -1:
 		body_size = init_body_size_multiplier
-		$CharacterScaling.set_body_scaling(body_size)
+		
+	$CharacterScaling.set_body_scaling(body_size)
 
 func _physics_process(delta):
 	if not is_dead():
@@ -158,7 +159,7 @@ func respawned(attributes):
 	for key in attributes.keys():
 		self.set(key, attributes[key])
 	
-	_ready() # so lazy to do another re-init func
+	$CharacterScaling.set_body_scaling(body_size)
 
 ####################
 # event listeners
