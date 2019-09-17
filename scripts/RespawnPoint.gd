@@ -1,6 +1,6 @@
 extends Node2D
 
-const group_name = "RespawnPoint"
+const group_name = "RespawnPoints"
 
 export(bool) var is_current_spawn_point = false
 export(bool) var flip_horizontally = false
@@ -34,13 +34,20 @@ func spawn_character():
 	character.respawned({"body_size": dead_character.body_size})
 	character.set_name("Character")
 	
-	listen_to_character_dying_event() # reconnect
+	alert_all_to_relisten() # reconnect
+
+func get_spawners():
+	return get_tree().get_nodes_in_group(group_name)
 
 func listen_to_character_dying_event():
 	Env.get_character().connect("character_died", self, "_on_Character_character_died")
 	
+func alert_all_to_relisten():
+	for spawner in get_spawners():
+		spawner.listen_to_character_dying_event()
+	
 func disable_other_spawns():
-	for spawner in get_tree().get_nodes_in_group(group_name):
+	for spawner in get_spawners():
 		if spawner != self:
 			spawner.is_current_spawn_point = false
 

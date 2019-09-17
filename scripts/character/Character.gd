@@ -167,7 +167,7 @@ func _agent_consumed(attributes_mutated):
 	for attribute in attributes_mutated:
 		match attribute:
 			"body_size":
-				$CharacterScaling.set_body_scaling(self.body_size)
+				$CharacterScaling.set_body_scaling(body_size)
 			"health":
 				pass # TODO: emit health changed signal for some UI
 
