@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=1]
 [ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=2]
@@ -10,7 +10,38 @@
 [ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/components/killzones/Killzone.tscn" type="PackedScene" id=9]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="Curve2D" id=1]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -0.600708, -21.8087, 0, 0, 0, 0, 0.0219116, 0.174744 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -21.6954, -3.37781, 0, 0, 0, 0, 0.288025, -4.00038 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 34.2834, -0.427784, 0, 0, 0, 0, -0.261948, 0.191628 )
+}
+
+[sub_resource type="Curve2D" id=8]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 55.0943, -0.647633, 0, 0, 0, 0, 26.6817, 13.4259, 0, 0, 0, 0, -0.17807, -0.0334306 )
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0.580231, 41.9137, 0, 0, 0, 0, -0.665405, -0.168846 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1.80212, -50.0872, 0, 0, 0, 0, -0.0947266, 0.159779 )
+}
+
+[node name="Lv2" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
@@ -47,10 +78,31 @@ position = Vector2( 6927.62, -137.077 )
 scale = Vector2( 4.98354, 10 )
 
 [node name="Sawblade6" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 8229.65, -462.782 )
 
+[node name="Path2D" parent="Sawblade6" index="2"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" parent="Sawblade6/Path2D" index="0"]
+position = Vector2( -0.600708, -21.8087 )
+rotation = 1.54248
+
 [node name="Sawblade7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 8527.82, -709.708 )
+position = Vector2( 8735.43, -396.308 )
+
+[node name="CollisionShape2D" parent="Sawblade7" index="0"]
+position = Vector2( 0.49823, -4.2853 )
+
+[node name="Sprite" parent="Sawblade7" index="1"]
+position = Vector2( 0.498047, -4.28531 )
+
+[node name="Path2D" parent="Sawblade7" index="2"]
+curve = SubResource( 4 )
+
+[node name="PathFollow2D" parent="Sawblade7/Path2D" index="0"]
+position = Vector2( 0.759766, 20.7089 )
+rotation = -1.59435
 
 [node name="Killzone5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7048.47, -134.56 )
@@ -76,7 +128,7 @@ scale = Vector2( 4.98354, 10 )
 position = Vector2( 1196.29, 110.457 )
 
 [node name="Baby2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1743.28, -314.629 )
+position = Vector2( 8641.67, -1335.38 )
 
 [node name="Baby3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1526.36, 364.889 )
@@ -85,7 +137,7 @@ position = Vector2( 1526.36, 364.889 )
 position = Vector2( 5096.08, -675.773 )
 
 [node name="Baby5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 5988.97, 514.086 )
+position = Vector2( 9556.36, -1867.13 )
 
 [node name="RespawnPoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 743.598, 353.283 )
@@ -113,17 +165,52 @@ position = Vector2( 5463.44, 4.62305 )
 position = Vector2( 5670.36, -169.106 )
 
 [node name="Sawblade" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 2964.17, 306.948 )
 
+[node name="Path2D" parent="Sawblade" index="2"]
+curve = SubResource( 5 )
+
 [node name="Sawblade2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 4420.59, -36.6015 )
+editor/display_folded = true
+position = Vector2( 4202.84, -99.4685 )
+
+[node name="Path2D" parent="Sawblade2" index="2"]
+curve = SubResource( 8 )
 
 [node name="Sawblade3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 4726.6, -1569.71 )
+editor/display_folded = true
+position = Vector2( 4730.59, -1857.31 )
+
+[node name="Path2D" parent="Sawblade3" index="2"]
+curve = SubResource( 7 )
+
+[node name="AnimationPlayer" parent="Sawblade3" index="3"]
+playback_speed = 1.5
 
 [node name="Sawblade4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1822.3, 542.706 )
 
 [node name="Sawblade5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2158.68, 547.132 )
+
+[node name="Sawblade8" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 8821.51, -932.544 )
+
+[node name="Path2D" parent="Sawblade8" index="2"]
+position = Vector2( 0, 0.116238 )
+curve = SubResource( 3 )
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
+
+[editable path="Sawblade6"]
+
+[editable path="Sawblade7"]
+
+[editable path="Sawblade"]
+
+[editable path="Sawblade2"]
+
+[editable path="Sawblade3"]
+
+[editable path="Sawblade8"]
