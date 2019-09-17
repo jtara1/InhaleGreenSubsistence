@@ -37,6 +37,7 @@ flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 2, 2 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
