@@ -43,8 +43,9 @@ func _ready():
 		$CharacterScaling.set_body_scaling(body_size)
 
 func _physics_process(delta):
-	move(delta)
-	$CharacterScaling.scale_size(delta)
+	if not is_dead():
+		move(delta)
+		$CharacterScaling.scale_size(delta)
 
 ####################
 # input
@@ -55,7 +56,7 @@ func user_input():
 	)
 
 ####################
-# movement
+# move
 func move(delta):
 	movement.y += gravity
 	var user_input = user_input()
@@ -71,9 +72,8 @@ func move(delta):
 	
 	air_controls()
 	hook_shot()
-	
-	if not is_dead():
-		movement = move_and_slide(movement, Vector2.UP)
+
+	movement = move_and_slide(movement, Vector2.UP)
 
 func run_right():
 	if !is_on_floor():
@@ -97,6 +97,8 @@ func stopped_running():
 	friction = true
 	movement.x = lerp(movement.x, 0, 0.2)
 
+####################
+# jump
 # TODO add a generic grace period when falling to jump
 func air_controls():
 	if Input.is_action_pressed("jump") and is_on_floor() and not using_hookshot:
@@ -151,6 +153,12 @@ func sprite_direction():
 func die():
 	.die() # set dead = true
 	animator.play("death")
+	
+func respawned(attributes):
+	for key in attributes.keys():
+		self.set(key, attributes[key])
+	
+	_ready() # so lazy to do another re-init func
 
 ####################
 # event listeners

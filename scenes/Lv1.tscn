@@ -176,7 +176,8 @@ anims/rotate = SubResource( 3 )
 curve = SubResource( 4 )
 
 [node name="PathFollow2D" parent="Killzone5/Path2D" index="0"]
-position = Vector2( 14.3876, 0.00361606 )
+position = Vector2( 14.4743, 0.0155408 )
+rotation = 0.000118905
 offset = 14.3611
 
 [node name="AnimationPlayer" parent="Killzone5" index="3"]

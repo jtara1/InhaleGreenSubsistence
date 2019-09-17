@@ -29,6 +29,7 @@ func spawn_character():
 	
 	# update the new char position & name
 	character.position = $PointToSpawnAt.global_position
+	character.respawned({"body_size": dead_character.body_size})
 	character.set_name("Character")
 	
 	listen_to_character_dying_event() # reconnect
