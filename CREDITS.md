@@ -8,3 +8,4 @@
 | flame.png (nice 3d real animated) | https://opengameart.org/content/animated-flame-texture |
 | sawblade (staryu-starmie) | https://opengameart.org/content/staryu-starmie |
 | control icons | https://www.kenney.nl/assets/game-icons-expansion |
+| penguin attack font | https://www.1001fonts.com/penguin-attack-font.html |
