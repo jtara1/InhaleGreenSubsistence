@@ -28,6 +28,7 @@ var raycast_direction
 var sprite_direction = Vector2(1,0)
 var using_hookshot = false
 var hookshot_coolingdown = false
+var dashing_coolingdown = false
 var wall_clinging = false
 var target = Vector2()
 var user_input = Vector2()
@@ -137,7 +138,7 @@ func hook_shot():
 
 	if using_hookshot:
 		global_position = Vector2f.lerp(global_position, target, 0.15)
-			
+	
 func sprite_direction():
 	sprite_direction = user_input()
 	if sprite_direction.y > 0:
@@ -148,7 +149,6 @@ func sprite_direction():
 		else:
 			sprite_direction = Vector2(-1, 0)
 	return sprite_direction.normalized()
-
 ####################
 # health
 func die():
