@@ -14,6 +14,7 @@ export(float) var wall_jump_x_force = 700
 export(float) var scaling_smoothing = 1
 export(float) var hook_shot_length = 200
 export(float) var hook_shot_strength = 50
+export(float) var dash_speed = 1200
 export(float) var init_body_size_multiplier = -1 # let inherited value from Agent decide
 
 onready var Vector2f = get_node("/root/Vector2f")
@@ -32,6 +33,8 @@ var dashing_coolingdown = false
 var wall_clinging = false
 var target = Vector2()
 var user_input = Vector2()
+var can_dash = true
+var is_dashing = false
 
 ####################
 # core
@@ -48,6 +51,8 @@ func _physics_process(delta):
 	if not is_dead():
 		move(delta)
 		$CharacterScaling.scale_size(delta)
+		
+	print(movement)
 
 ####################
 # input
@@ -64,16 +69,17 @@ func move(delta):
 	var user_input = user_input()
 
 	friction = false
-
-	if user_input.x == 1:
-		run_right()
-	elif user_input.x == -1:
-		run_left()
-	else:
-		stopped_running()
+	if not is_dashing:
+		if user_input.x == 1:
+			run_right()
+		elif user_input.x == -1:
+			run_left()
+		else:
+			stopped_running()
 	
 	air_controls()
 	hook_shot()
+	dash()
 
 	movement = move_and_slide(movement, Vector2.UP)
 
@@ -138,12 +144,17 @@ func hook_shot():
 
 	if using_hookshot:
 		global_position = Vector2f.lerp(global_position, target, 0.15)
+		
+func dash():
+	if Input.is_action_just_pressed("dodge") and can_dash:
+		is_dashing = true
+		var dash_direction = sprite_direction() * dash_speed
+		movement = dash_direction
+		$DashTime.start()
 	
 func sprite_direction():
 	sprite_direction = user_input()
-	if sprite_direction.y > 0:
-		sprite_direction.y = 0
-	elif sprite_direction == Vector2.ZERO:
+	if sprite_direction == Vector2.ZERO:
 		if sprite.flip_h:
 			sprite_direction = Vector2(1, 0)
 		else:
@@ -188,3 +199,8 @@ func _on_HookDelayTimer_timeout():
 func _on_HookTravelTimer_timeout():
 	using_hookshot = false
 	movement.y = 0
+
+
+func _on_DashTime_timeout():
+	is_dashing = false
+	movement.y = lerp(movement.y, 0, 0.6)
