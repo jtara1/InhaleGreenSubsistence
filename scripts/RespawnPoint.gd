@@ -49,6 +49,8 @@ func alert_all_to_relisten():
 func disable_other_spawns():
 	for spawner in get_spawners():
 		if spawner != self:
+			print('play idle from', get_name())
+			spawner.get_node("Sprite/RespawnPointAnimationPlayer").play("idle") # red flag
 			spawner.is_current_spawn_point = false
 
 func _on_Character_character_died():
@@ -58,5 +60,7 @@ func _on_Character_character_died():
 func _on_RespawnPoint_body_entered(body):
 	if body is Character:
 		is_current_spawn_point = true
+		print('play idle2 from', get_name())
+		$Sprite/RespawnPointAnimationPlayer.play("idle2") # blue flag
 		disable_other_spawns()
 

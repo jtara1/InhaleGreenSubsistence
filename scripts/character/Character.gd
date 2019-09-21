@@ -51,8 +51,6 @@ func _physics_process(delta):
 	if not is_dead():
 		move(delta)
 		$CharacterScaling.scale_size(delta)
-		
-	print(movement)
 
 ####################
 # input

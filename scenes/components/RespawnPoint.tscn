@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scripts/RespawnPoint.gd" type="Script" id=1]
 [ext_resource path="res://images/flags.png" type="Texture" id=2]
-[ext_resource path="res://animations/flag/red_wave.tres" type="Animation" id=3]
-[ext_resource path="res://scripts/RespawnPointAnimationPlayer.gd" type="Script" id=4]
+[ext_resource path="res://animations/flag/idle.anim" type="Animation" id=3]
+[ext_resource path="res://animations/flag/idle2.anim" type="Animation" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 12.6889 )
@@ -27,7 +27,8 @@ frame = 4
 region_filter_clip = true
 
 [node name="RespawnPointAnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "idle"
 playback_speed = 0.1
 anims/idle = ExtResource( 3 )
-script = ExtResource( 4 )
+anims/idle2 = ExtResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_RespawnPoint_body_entered"]

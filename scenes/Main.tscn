@@ -32,7 +32,7 @@ tile_data = PoolIntArray( -262087, 15, 0, -196583, 19, 0, -196582, 31, 0, -19658
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
-position = Vector2( 1050.72, 354.203 )
+position = Vector2( 391.731, 145.426 )
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 
@@ -50,6 +50,9 @@ position = Vector2( 136.955, 355.555 )
 
 [node name="RespawnPoint2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2032.36, 77.9619 )
+
+[node name="RespawnPoint3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2039.54, -266.437 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
