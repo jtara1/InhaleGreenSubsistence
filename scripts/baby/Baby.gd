@@ -15,7 +15,7 @@ func die():
 	
 func jump():
 	.jump()
-	$SlimeSprite/AnimationPlayer.play("jump")
+	$SlimeSprite/AnimationPlayer.queue("jump")
 
 ######################
 # event listners
