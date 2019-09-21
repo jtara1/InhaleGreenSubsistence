@@ -196,7 +196,7 @@ playback_speed = 0.5
 anims/go-then-return = SubResource( 5 )
 
 [node name="GrappleGraphic" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1338.75, -322.067 )
+position = Vector2( 1310.46, -63.9963 )
 scale = Vector2( 1.6623, 1.6623 )
 
 [node name="Sawblade" parent="." instance=ExtResource( 8 )]
