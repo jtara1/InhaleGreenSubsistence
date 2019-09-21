@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=1]
 [ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/components/killzones/Killzone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game-objects/boxes/BreakableBox.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -224,9 +225,6 @@ position = Vector2( 1526.36, 364.889 )
 [node name="Baby4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5119.46, -782.665 )
 
-[node name="Baby5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 5988.97, 514.086 )
-
 [node name="Baby6" parent="." instance=ExtResource( 6 )]
 position = Vector2( 13632.6, 6019.2 )
 
@@ -325,6 +323,9 @@ curve = SubResource( 12 )
 [node name="PathFollow2D" parent="Sawblade10/Path2D" index="0"]
 position = Vector2( -0.0962524, -60.509 )
 rotation = 1.57105
+
+[node name="BreakableBox" parent="." instance=ExtResource( 10 )]
+position = Vector2( 18184.3, 2546.29 )
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
 
 [editable path="Sawblade13"]

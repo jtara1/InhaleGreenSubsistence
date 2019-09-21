@@ -15,7 +15,7 @@ export(float) var scaling_smoothing = 1
 export(float) var hook_shot_length = 200
 export(float) var hook_shot_strength = 50
 export(float) var dash_speed = 1200
-export(float) var init_body_size_multiplier = -1 # let inherited value from Agent decide
+export(float) var init_body_size_multiplier = -1 # let inherited value from Agent decide if -1
 
 onready var Vector2f = get_node("/root/Vector2f")
 onready var sprite = $SlimeSprite
