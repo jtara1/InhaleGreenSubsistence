@@ -21,6 +21,7 @@ onready var Vector2f = get_node("/root/Vector2f")
 onready var sprite = $SlimeSprite
 onready var animator = $SlimeSprite/AnimationPlayer
 onready var raycast = $RayCast2D
+onready var hook_shot_particle = $HookShotParticles
 
 var movement = Vector2()
 var full_jump = false
@@ -35,6 +36,8 @@ var target = Vector2()
 var user_input = Vector2()
 var can_dash = true
 var is_dashing = false
+var connected_hookshot = false
+var particle_destination = Vector2()
 
 ####################
 # core
@@ -51,8 +54,6 @@ func _physics_process(delta):
 	if not is_dead():
 		move(delta)
 		$CharacterScaling.scale_size(delta)
-		
-	print(movement)
 
 ####################
 # input
@@ -65,11 +66,12 @@ func user_input():
 ####################
 # move
 func move(delta):
-	movement.y += gravity
+	if not using_hookshot:
+		movement.y += gravity
 	var user_input = user_input()
 
 	friction = false
-	if not is_dashing:
+	if not is_dashing and not using_hookshot:
 		if user_input.x == 1:
 			run_right()
 		elif user_input.x == -1:
@@ -77,9 +79,10 @@ func move(delta):
 		else:
 			stopped_running()
 	
-	air_controls()
-	hook_shot()
+	if not using_hookshot:
+		air_controls()
 	dash()
+	hook_shot()
 
 	movement = move_and_slide(movement, Vector2.UP)
 
@@ -131,19 +134,28 @@ func hook_shot():
 	raycast_direction = sprite_direction() * hook_shot_length
 	raycast.cast_to = raycast_direction
 	if Input.is_action_just_pressed("shoot") and not hookshot_coolingdown:
-		# TODO make it so only certain objects are grabbable
-		sprite.set_frame(35)
+		hook_shot_particle.global_position = self.global_position + Vector2(4.6,12.6)
+		animator.play("shoot", -1, 5)
+		movement = Vector2.ZERO
+		using_hookshot = true
+		hookshot_coolingdown = true
+		$HookTravelTimer.start()
+		$HookDelayTimer.start()
+#		hook_shot_particle.global_position = Vector2f.lerp(self.global_position,
+#		self.global_position + raycast_direction, 0.15)
+#		hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, target, 0.15)
+		
 		if raycast.is_colliding():
-			# TODO create new animation for hooking onto wall
 			target = raycast.get_collision_point()
-			animator.play("shoot", -1, 5)
-			$HookTravelTimer.start()
-			$HookDelayTimer.start()
-			using_hookshot = true
-			hookshot_coolingdown = true
-			
-
-	if using_hookshot:
+			particle_destination = target
+			connected_hookshot = true
+		else:
+			particle_destination = self.global_position + raycast_direction
+		hook_shot_particle.emitting = true
+		
+	hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, particle_destination, 0.15)		
+	if connected_hookshot:
+		#hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, target, 0.15)
 		global_position = Vector2f.lerp(global_position, target, 0.15)
 		
 func dash():
@@ -199,6 +211,8 @@ func _on_HookDelayTimer_timeout():
 
 func _on_HookTravelTimer_timeout():
 	using_hookshot = false
+	connected_hookshot = false
+	hook_shot_particle.emitting = false
 	movement.y = 0
 
 
