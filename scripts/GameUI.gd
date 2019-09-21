@@ -8,12 +8,19 @@ onready var dashes_label = $CenterContainer/VBoxContainer/DashesLabel
 
 func _ready():
 	Env.get_character().connect("dashed", self, "_on_Character_dashed")
+	Env.get_character().connect("body_size_changed", self, "_on_Character_body_size_changed")
+	
 	Env.connect("character_respawned", self, "_on_Character_character_respawned")
 	
+	_on_Character_body_size_changed(Env.get_character().body_size) # init value
 	_on_Character_dashed(Env.get_character().dashes_remaining) # init value
 
 func _on_Character_character_respawned(character):
+	character.connect("body_size_changed", self, "_on_Character_body_size_changed")
 	character.connect("dashed", self, "_on_Character_dashed")
+	
+func _on_Character_body_size_changed(size):
+	size_label.text = "Size: " + str(size)
 	
 func _on_Character_dashed(remaining):
 	dashes_label.text = "Dashes: " + str(remaining)
