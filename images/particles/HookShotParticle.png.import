@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/HookShotParticle.png-6e25c38442eda1a00f29cb3cf642962e.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://images/particles/HookShotParticle.png"
+dest_files=[ "res://.import/HookShotParticle.png-6e25c38442eda1a00f29cb3cf642962e.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
