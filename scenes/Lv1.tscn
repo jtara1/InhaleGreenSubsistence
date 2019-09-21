@@ -200,6 +200,7 @@ position = Vector2( 1310.46, -63.9963 )
 scale = Vector2( 1.6623, 1.6623 )
 
 [node name="Sawblade" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
 position = Vector2( 8524.95, -1049.25 )
 
 [node name="Path2D" parent="Sawblade" index="2"]

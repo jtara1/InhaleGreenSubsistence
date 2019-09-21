@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/character/Character.gd" type="Script" id=1]
 [ext_resource path="res://scripts/character/CharacterScaling.gd" type="Script" id=2]
@@ -20,6 +20,12 @@ scale = 7.0
 scale_random = 0.6
 hue_variation = 0.11
 hue_variation_random = 0.4
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -68,6 +74,14 @@ texture = ExtResource( 4 )
 [node name="DashTime" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 205.713, -91.6574 )
+amount = 100
+speed_scale = 0.5
+local_coords = false
+process_material = SubResource( 3 )
+texture = ExtResource( 4 )
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="timeout" from="HookTravelTimer" to="." method="_on_HookTravelTimer_timeout"]
 [connection signal="timeout" from="HookDelayTimer" to="." method="_on_HookDelayTimer_timeout"]

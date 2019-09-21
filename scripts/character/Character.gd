@@ -132,6 +132,7 @@ func hook_shot():
 	raycast.cast_to = raycast_direction
 	if Input.is_action_just_pressed("shoot") and not hookshot_coolingdown:
 		# TODO make it so only certain objects are grabbable
+		sprite.set_frame(35)
 		if raycast.is_colliding():
 			# TODO create new animation for hooking onto wall
 			target = raycast.get_collision_point()
