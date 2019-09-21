@@ -25,7 +25,7 @@ func spawn_character():
 	
 	# create a new char & update its cache
 	var character = CharacterNode.instance()
-	Env.character = character
+	Env.set_character(character)
 	
 	# update the new char position & name
 	character.position = $PointToSpawnAt.global_position

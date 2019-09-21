@@ -1,8 +1,11 @@
 extends Node
 
-var character
+signal character_respawned
+
+var character # private attribute
 var root
 var scene_node
+
 
 func _ready():
 	root = get_tree().get_root()
@@ -11,6 +14,10 @@ func _ready():
 
 func get_character():
 	return character
+	
+func set_character(character):
+	self.character = character
+	emit_signal("character_respawned", character) # global since the listeners won't have a ref to this new instance yet
 
 func find_nodes_of_type(type):
 	var nodes = []

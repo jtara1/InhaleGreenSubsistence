@@ -3,6 +3,7 @@ class_name Character
 
 signal character_died
 signal body_size_changed
+signal dashed
 
 export(float) var gravity = 9.8
 export(float) var speed = 100.0
@@ -16,6 +17,7 @@ export(float) var scaling_smoothing = 1
 export(float) var hook_shot_length = 200
 export(float) var hook_shot_strength = 50
 export(float) var dash_speed = 1200
+export(int) var dashes_remaining = 3
 export(float) var init_body_size_multiplier = -1 # let inherited value from Agent decide if -1
 
 onready var Vector2f = get_node("/root/Vector2f")
@@ -36,7 +38,6 @@ var dashing_coolingdown = false
 var wall_clinging = false
 var target = Vector2()
 var user_input = Vector2()
-var can_dash = true
 var is_dashing = false
 var connected_hookshot = false
 var particle_destination = Vector2()
@@ -163,13 +164,21 @@ func hook_shot():
 	hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, particle_destination, 0.15)		
 	if connected_hookshot:
 		global_position = Vector2f.lerp(global_position, target, 0.15)
-		
+
+####################
+# dash
 func dash():
-	if Input.is_action_just_pressed("dodge") and can_dash:
+	if Input.is_action_just_pressed("dodge") and can_dash():
+		dashes_remaining -= 1
+		emit_signal("dashed", dashes_remaining)
+		
 		is_dashing = true
 		var dash_direction = sprite_direction() * dash_speed
 		movement = dash_direction
 		$DashTime.start()
+		
+func can_dash():
+	return $DashTime.time_left <= 0.025 and dashes_remaining > 0
 	
 func sprite_direction():
 	sprite_direction = user_input()
