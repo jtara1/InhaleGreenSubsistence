@@ -66,12 +66,11 @@ func user_input():
 ####################
 # move
 func move(delta):
-	if not using_hookshot:
-		movement.y += gravity
+	movement.y += gravity
 	var user_input = user_input()
 
 	friction = false
-	if not is_dashing and not using_hookshot:
+	if not is_dashing:
 		if user_input.x == 1:
 			run_right()
 		elif user_input.x == -1:
@@ -79,8 +78,7 @@ func move(delta):
 		else:
 			stopped_running()
 	
-	if not using_hookshot:
-		air_controls()
+	air_controls()
 	dash()
 	hook_shot()
 
@@ -133,29 +131,26 @@ func air_controls():
 func hook_shot():
 	raycast_direction = sprite_direction() * hook_shot_length
 	raycast.cast_to = raycast_direction
+	
 	if Input.is_action_just_pressed("shoot") and not hookshot_coolingdown:
 		hook_shot_particle.global_position = self.global_position + Vector2(4.6,12.6)
 		animator.play("shoot", -1, 5)
-		movement = Vector2.ZERO
 		using_hookshot = true
 		hookshot_coolingdown = true
 		$HookTravelTimer.start()
 		$HookDelayTimer.start()
-#		hook_shot_particle.global_position = Vector2f.lerp(self.global_position,
-#		self.global_position + raycast_direction, 0.15)
-#		hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, target, 0.15)
 		
 		if raycast.is_colliding():
 			target = raycast.get_collision_point()
 			particle_destination = target
 			connected_hookshot = true
 		else:
-			particle_destination = self.global_position + raycast_direction
+			particle_destination = self.global_position + raycast_direction * scale
+			
 		hook_shot_particle.emitting = true
 		
 	hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, particle_destination, 0.15)		
 	if connected_hookshot:
-		#hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, target, 0.15)
 		global_position = Vector2f.lerp(global_position, target, 0.15)
 		
 func dash():
