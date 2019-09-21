@@ -14,6 +14,9 @@ onready var target_scale = init_scale
 var changing_scaling = false
 
 
+func _ready():
+	character.connect("body_size_changed", self, "_on_Character_body_size_changed")
+
 func scale_size(delta):
 	if character.scale.distance_to(target_scale) >= scaling_difference:
 		changing_scaling = true
@@ -28,3 +31,6 @@ func scale_size(delta):
 
 func set_body_scaling(scaling_multiplier):
 	target_scale = init_scale * scaling_multiplier
+
+func _on_Character_body_size_changed(new_body_size):
+	set_body_scaling(new_body_size)
