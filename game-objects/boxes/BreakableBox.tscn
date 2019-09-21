@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/BreakableBox.gd" type="Script" id=1]
 [ext_resource path="res://images/box animation/00.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://images/box animation/07.png" type="Texture" id=9]
 [ext_resource path="res://images/box animation/08.png" type="Texture" id=10]
 [ext_resource path="res://audio/sfx/paper_crush.wav" type="AudioStream" id=11]
+[ext_resource path="res://fonts/patk_54.tres" type="DynamicFont" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -21,6 +22,8 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
 
 [node name="BreakableBox" type="Area2D"]
 script = ExtResource( 1 )
@@ -34,5 +37,21 @@ shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -21.5824
+margin_top = -0.985079
+margin_right = 38.4176
+margin_bottom = 59.0149
+rect_scale = Vector2( 0.50437, 0.50437 )
+custom_fonts/normal_font = ExtResource( 12 )
+text = "2"
+scroll_active = false
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+scale = Vector2( 2.16623, 2.16623 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_BreakableBox_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

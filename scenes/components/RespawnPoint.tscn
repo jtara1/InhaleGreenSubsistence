@@ -23,7 +23,7 @@ scale = Vector2( 8.19204, 8.19204 )
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 4
-frame = 4
+frame = 6
 region_filter_clip = true
 
 [node name="RespawnPointAnimationPlayer" type="AnimationPlayer" parent="Sprite"]

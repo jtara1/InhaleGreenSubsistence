@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/components/killzones/Killzone.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game-objects/BreakableBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game-objects/boxes/BreakableBox.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 
