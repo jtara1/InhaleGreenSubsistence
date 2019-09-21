@@ -43,7 +43,7 @@ var particle_destination = Vector2()
 ####################
 # core
 func _ready():
-	self.connect("consumed", self, "_agent_consumed")
+	connect("consumed", self, "_agent_consumed")
 	animator.connect("animation_finished", self, "_on_SlimeSprite_animation_finished")
 	
 	if init_body_size_multiplier != -1:
@@ -178,6 +178,7 @@ func sprite_direction():
 		else:
 			sprite_direction = Vector2(-1, 0)
 	return sprite_direction.normalized()
+
 ####################
 # health
 func die():
@@ -209,17 +210,14 @@ func _on_SlimeSprite_animation_finished(anim_name):
 func _on_JumpTimer_timeout():
 	full_jump = true
 
-
 func _on_HookDelayTimer_timeout():
 	hookshot_coolingdown = false
-
 
 func _on_HookTravelTimer_timeout():
 	using_hookshot = false
 	connected_hookshot = false
 	hook_shot_particle.emitting = false
 	movement.y = 0
-
 
 func _on_DashTime_timeout():
 	is_dashing = false
