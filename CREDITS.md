@@ -9,3 +9,5 @@
 | sawblade (staryu-starmie) | https://opengameart.org/content/staryu-starmie |
 | control icons | https://www.kenney.nl/assets/game-icons-expansion |
 | penguin attack font | https://www.1001fonts.com/penguin-attack-font.html |
+| box animation.zip | https://opengameart.org/content/box-2 |
+| paper_crush.wav | https://opengameart.org/content/paper-crush-sounds |

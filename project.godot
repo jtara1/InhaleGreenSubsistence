@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Consumable",
 "language": "GDScript",
 "path": "res://scripts/Consumable.gd"
+}, {
+"base": "Area2D",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://scripts/GameObject.gd"
 } ]
 _global_script_class_icons={
 "Agent": "",
 "Character": "",
-"Consumable": ""
+"Consumable": "",
+"GameObject": ""
 }
 
 [application]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=1]
 [ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/components/killzones/Killzone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game-objects/BreakableBox.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 
@@ -31,7 +32,7 @@ tile_data = PoolIntArray( -262087, 15, 0, -196583, 19, 0, -196582, 31, 0, -19658
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
-position = Vector2( 2014.56, 83.9452 )
+position = Vector2( 1050.72, 354.203 )
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 
@@ -62,4 +63,7 @@ scale = Vector2( 1.41007e+009, 1 )
 [node name="Killzone2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3044.24, 889.222 )
 scale = Vector2( 13.3544, 13.3544 )
+
+[node name="BreakableBox" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1216.08, 186.932 )
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
