@@ -1,31 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/baby/Baby.gd" type="Script" id=1]
 [ext_resource path="res://scripts/baby/ConsumableBaby.gd" type="Script" id=2]
 [ext_resource path="res://audio/sfx/bird_poo - baby consumed.ogg" type="AudioStream" id=3]
 [ext_resource path="res://game-objects/components/SlimeSprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://audio/sfx/Baby 01.ogg" type="AudioStream" id=5]
-[ext_resource path="res://images/black-ring.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.9451
-
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
-length = 3.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("BlackRingSprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.0163585, 0.0163585 ), Vector2( 0.377288, 0.377288 ) ]
-}
 
 [node name="Baby" type="Area2D"]
 gravity = 300.0
@@ -44,17 +26,12 @@ scale = Vector2( 3, 3 )
 
 [node name="IdleAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+volume_db = -10.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-playback_speed = 0.25
-anims/idle = SubResource( 2 )
-
-[node name="BlackRingSprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.231373 )
-scale = Vector2( 0.230038, 0.230038 )
-z_index = -1
-texture = ExtResource( 6 )
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
 [connection signal="body_entered" from="." to="." method="_on_Baby_body_entered"]
 [connection signal="body_entered" from="." to="ConsumableBaby" method="_on_Baby_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_AudioStreamPlayer2D_finished"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
