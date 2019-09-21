@@ -22,7 +22,7 @@ onready var sprite = $SlimeSprite
 onready var animator = $SlimeSprite/AnimationPlayer
 onready var raycast = $RayCast2D
 onready var hook_shot_particle = $HookShotParticles
-onready var mat = ParticlesMaterial.new()
+onready var particle_material = ParticlesMaterial.new()
 
 var movement = Vector2()
 var full_jump = false
@@ -49,17 +49,17 @@ func _ready():
 	if init_body_size_multiplier != -1:
 		body_size = init_body_size_multiplier
 		
-	mat.scale = 8
-	mat.angular_velocity = 10000
-	mat.linear_accel = 20
-	mat.radial_accel = 25
-	hook_shot_particle.process_material = mat
+	particle_material.scale = 8
+	particle_material.angular_velocity = 10000
+	particle_material.linear_accel = 20
+	particle_material.radial_accel = 25
+	hook_shot_particle.process_material = particle_material
 		
 	$CharacterScaling.set_body_scaling(body_size)
 
 func _physics_process(delta):
-	mat.scale = 8 * scale.x
-	hook_shot_particle.process_material = mat
+	particle_material.scale = 8 * scale.x
+	hook_shot_particle.process_material = particle_material
 	if not is_dead():
 		move(delta)
 		$CharacterScaling.scale_size(delta)

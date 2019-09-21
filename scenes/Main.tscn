@@ -70,6 +70,12 @@ scale = Vector2( 13.3544, 13.3544 )
 [node name="BreakableBox" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1216.08, 186.932 )
 
+[node name="BreakableBox2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1216.08, 106.371 )
+
+[node name="BreakableBox3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1216.08, 28.3273 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource( 9 )]
