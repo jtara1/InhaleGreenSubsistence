@@ -79,4 +79,3 @@ position = Vector2( 1216.08, 28.3273 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource( 9 )]
-[connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]

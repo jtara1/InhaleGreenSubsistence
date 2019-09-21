@@ -13,6 +13,7 @@ var target_zoom = init_zoom
 
 func _ready():
 	character.connect("body_size_changed", self, "_on_Character_body_size_changed")
+	character.connect("character_died", self, "_on_Character_character_died")
 	set_target_zoom(character.body_size)
 	
 func _physics_process(delta):
@@ -24,3 +25,6 @@ func set_target_zoom(body_size):
 	
 func _on_Character_body_size_changed(new_body_size):
 	set_target_zoom(new_body_size)
+
+func _on_Character_character_died():
+	set_target_zoom(character.body_size)
