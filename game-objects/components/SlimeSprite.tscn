@@ -16,7 +16,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
 vframes = 20
 hframes = 10
-frame = 30
+frame = 41
 region_filter_clip = true
 script = ExtResource( 2 )
 
