@@ -12,6 +12,10 @@ func die():
 	.die() # died = true
 	$AudioStreamPlayer2D.play()
 	$SlimeSprite/AnimationPlayer.play("death")
+	
+func jump():
+	.jump()
+	$SlimeSprite/AnimationPlayer.play("jump")
 
 ######################
 # event listners
