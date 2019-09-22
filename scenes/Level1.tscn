@@ -5,8 +5,8 @@
 [ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game-objects/Character.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game-objects/Baby.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/components/killzones/Sawblade.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/components/killzones/Flame.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game-objects/killzones/Sawblade.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game-objects/killzones/Flame.tscn" type="PackedScene" id=7]
 [ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=8]
 [ext_resource path="res://ui/GameUI.tscn" type="PackedScene" id=9]
 

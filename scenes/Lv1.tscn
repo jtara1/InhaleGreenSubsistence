@@ -7,9 +7,9 @@
 [ext_resource path="res://game-objects/Baby.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=7]
-[ext_resource path="res://scenes/components/killzones/Killzone.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/components/killzones/Sawblade.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/components/killzones/curves/left-to-right.tres" type="Curve2D" id=10]
+[ext_resource path="res://game-objects/killzones/Killzone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game-objects/killzones/Sawblade.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game-objects/killzones/curves/left-to-right.tres" type="Curve2D" id=10]
 [ext_resource path="res://ui/info-graphics/GrappleGraphic.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
