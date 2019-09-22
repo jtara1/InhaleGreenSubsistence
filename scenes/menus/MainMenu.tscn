@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://images/backgrounds/snow.png" type="Texture" id=2]
 [ext_resource path="res://fonts/patk_108.tres" type="DynamicFont" id=3]
 [ext_resource path="res://fonts/patk_54_blue_no_outline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://audio/music/Basic_Beta.ogg" type="AudioStream" id=5]
+[ext_resource path="res://audio/music/RPG_Title_MainMenu_Music.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.419608, 0.427451, 1, 1 ), Color( 0.596078, 0.701961, 0.482353, 1 ) ]
+"values": [ Color( 0.494118, 0.54902, 0.74902, 1 ), Color( 0.596078, 0.701961, 0.482353, 1 ) ]
 }
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -30,6 +30,12 @@ bg_color = Color( 0.741176, 0.796078, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 0.87451, 0.839216, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.741176, 0.796078, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.596078, 0.701961, 0.482353, 1 )
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -94,9 +100,59 @@ custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.345098, 0.435294, 0.752941, 1 )
 text = "Quit"
 
+[node name="Credits" type="Button" parent="Control"]
+margin_left = 47.8933
+margin_top = 613.0
+margin_right = 227.893
+margin_bottom = 681.0
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.345098, 0.435294, 0.752941, 1 )
+text = "Credits"
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+margin_right = 86.0
+margin_bottom = 40.0
+custom_styles/panel = SubResource( 6 )
+window_title = "About"
+
+[node name="Label" type="Label" parent="WindowDialog"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.87451, 0.839216, 1 )
+text = "Controls:
+- wasd to move
+- space to jump
+- q or left click to grapple
+- shift to dash"
+
+[node name="CreditsDialog" type="WindowDialog" parent="."]
+margin_right = 86.0
+margin_bottom = 40.0
+custom_styles/panel = SubResource( 6 )
+window_title = "About"
+
+[node name="Label" type="Label" parent="CreditsDialog"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.87451, 0.839216, 1 )
+text = "Created By:
+James T. ( github.com/jtara1 )
+Joshua
+
+Assets Made By:"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -7.0
 autoplay = true
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/About" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/About" to="." method="_on_About_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Control/Credits" to="." method="_on_Credits_pressed"]
