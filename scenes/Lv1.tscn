@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=1]
 [ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/components/killzones/Killzone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/components/killzones/Sawblade.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/components/killzones/curves/left-to-right.tres" type="Curve2D" id=11]
+[ext_resource path="res://game-objects/boxes/BreakableBox.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "rotate"
@@ -226,6 +227,11 @@ curve = SubResource( 7 )
 [node name="PathFollow2D" parent="Sawblade2/Path2D" index="0"]
 position = Vector2( 1.46643, 45.437 )
 rotation = -1.59793
+
+[node name="BreakableBox" parent="." instance=ExtResource( 12 )]
+position = Vector2( 2553.27, 110.344 )
+scale = Vector2( 3, 3 )
+size_needed_to_break = 5
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
 
 [editable path="Killzone3"]
