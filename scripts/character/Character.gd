@@ -17,7 +17,7 @@ export(float) var scaling_smoothing = 1
 export(float) var hook_shot_length = 200
 export(float) var hook_shot_strength = 50
 export(float) var dash_speed = 1200
-export(int) var dashes_remaining = 3
+export(int) var initial_dashes = 3
 export(float) var init_body_size_multiplier = -1 # let inherited value from Agent decide if -1
 
 onready var Vector2f = get_node("/root/Vector2f")
@@ -41,6 +41,7 @@ var user_input = Vector2()
 var is_dashing = false
 var connected_hookshot = false
 var particle_destination = Vector2()
+var dashes_remaining = 3
 
 ####################
 # core
@@ -200,6 +201,8 @@ func respawned(attributes):
 		self.set(key, attributes[key])
 	
 	$CharacterScaling.set_body_scaling(body_size)
+	dashes_remaining = initial_dashes
+	emit_signal("dashed", dashes_remaining)
 
 ####################
 # event listeners
