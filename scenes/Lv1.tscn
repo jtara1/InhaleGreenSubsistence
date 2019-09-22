@@ -230,7 +230,12 @@ rotation = -1.59793
 
 [node name="BreakableBox" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2553.27, 110.344 )
-scale = Vector2( 3, 3 )
+scale = Vector2( 3, 3.5 )
+size_needed_to_break = 3
+
+[node name="BreakableBox2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 7019.61, -139.265 )
+scale = Vector2( 5, 4.5 )
 size_needed_to_break = 5
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
 
