@@ -4,11 +4,6 @@
 
 [resource]
 size = 108
-<<<<<<< HEAD
 outline_size = 5
 outline_color = Color( 0.494118, 0.54902, 0.74902, 1 )
-=======
-outline_size = 2
-outline_color = Color( 0.263345, 0.444193, 0.492146, 1 )
->>>>>>> parent of 14ef436... add: game ui to all game scenes; refactor: organization of nodes in game
 font_data = ExtResource( 1 )
