@@ -31,7 +31,6 @@ scene_to_load = "Lv1"
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( 65.9923, 1530.23 )
-dashes_remaining = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="InhaleGreenSubsistence"
-run/main_scene="res://scenes/Lv2.tscn"
+run/main_scene="res://scenes/menus/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
