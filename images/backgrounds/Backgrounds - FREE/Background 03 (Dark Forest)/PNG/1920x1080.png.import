@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1920x1080.png-a4bedcf917e235dd30c628b2cc20109e.stex"
+path="res://.import/1920x1080.png-1a3af3b226b5f1285faf4498e3bc1ef4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/backgrounds/Backgrounds - FREE/Background 03/PNG/1920x1080.png"
-dest_files=[ "res://.import/1920x1080.png-a4bedcf917e235dd30c628b2cc20109e.stex" ]
+source_file="res://images/backgrounds/Backgrounds - FREE/Background 03 (Dark Forest)/PNG/1920x1080.png"
+dest_files=[ "res://.import/1920x1080.png-1a3af3b226b5f1285faf4498e3bc1ef4.stex" ]
 
 [params]
 

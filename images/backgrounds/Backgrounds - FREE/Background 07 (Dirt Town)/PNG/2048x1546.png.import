@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/2048x1546.png-6848dca0fc02ee4b472c7175b9a138c6.stex"
+path="res://.import/2048x1546.png-48b3004fc2ab8fa0751657728b0b8e3e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/backgrounds/Backgrounds - FREE/Background 07/PNG/2048x1546.png"
-dest_files=[ "res://.import/2048x1546.png-6848dca0fc02ee4b472c7175b9a138c6.stex" ]
+source_file="res://images/backgrounds/Backgrounds - FREE/Background 07 (Dirt Town)/PNG/2048x1546.png"
+dest_files=[ "res://.import/2048x1546.png-48b3004fc2ab8fa0751657728b0b8e3e.stex" ]
 
 [params]
 

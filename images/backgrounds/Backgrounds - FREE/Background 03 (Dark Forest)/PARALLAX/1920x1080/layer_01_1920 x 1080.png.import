@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/layer_01_1920 x 1080.png-225f4e0a905b1a6319689e97f1071308.stex"
+path="res://.import/layer_01_1920 x 1080.png-dbbdea77157cdd11877f89ae36608aee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/backgrounds/Backgrounds - FREE/Background 03/PARALLAX/1920x1080/layer_01_1920 x 1080.png"
-dest_files=[ "res://.import/layer_01_1920 x 1080.png-225f4e0a905b1a6319689e97f1071308.stex" ]
+source_file="res://images/backgrounds/Backgrounds - FREE/Background 03 (Dark Forest)/PARALLAX/1920x1080/layer_01_1920 x 1080.png"
+dest_files=[ "res://.import/layer_01_1920 x 1080.png-dbbdea77157cdd11877f89ae36608aee.stex" ]
 
 [params]
 

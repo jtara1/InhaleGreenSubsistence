@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/layer_01_1920 x 1080.png-26bf54ba68899446bb893918e72bac47.stex"
+path="res://.import/layer_01_1920 x 1080.png-b9b7a690eb71b06a44b4ea0723fff754.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/backgrounds/Backgrounds - FREE/Background 07/PARALLAX/layer_01_1920 x 1080.png"
-dest_files=[ "res://.import/layer_01_1920 x 1080.png-26bf54ba68899446bb893918e72bac47.stex" ]
+source_file="res://images/backgrounds/Backgrounds - FREE/Background 07 (Dirt Town)/PARALLAX/layer_01_1920 x 1080.png"
+dest_files=[ "res://.import/layer_01_1920 x 1080.png-b9b7a690eb71b06a44b4ea0723fff754.stex" ]
 
 [params]
 
