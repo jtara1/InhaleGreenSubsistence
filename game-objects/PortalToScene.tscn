@@ -49,4 +49,6 @@ margin_bottom = 36.9423
 rect_scale = Vector2( 0.265111, 0.265111 )
 custom_fonts/font = ExtResource( 3 )
 text = "Level1"
+align = 1
+valign = 1
 [connection signal="body_entered" from="." to="." method="_on_PortalToScene_body_entered"]
