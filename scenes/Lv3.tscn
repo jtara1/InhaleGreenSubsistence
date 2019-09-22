@@ -420,6 +420,10 @@ position = Vector2( 17537.2, 8849.46 )
 [node name="Path2D" parent="Sawblade11" index="2"]
 curve = SubResource( 14 )
 
+[node name="PathFollow2D" parent="Sawblade11/Path2D" index="0"]
+position = Vector2( 1.45093, -87.2707 )
+rotation = 1.58937
+
 [node name="Sawblade12" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 modulate = Color( 0, 0, 0, 1 )
@@ -427,6 +431,10 @@ position = Vector2( 19514, 8286.48 )
 
 [node name="Path2D" parent="Sawblade12" index="2"]
 curve = SubResource( 15 )
+
+[node name="PathFollow2D" parent="Sawblade12/Path2D" index="0"]
+position = Vector2( 2.23877, 95.6918 )
+rotation = -1.59685
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
 
 [editable path="Killzone3"]
