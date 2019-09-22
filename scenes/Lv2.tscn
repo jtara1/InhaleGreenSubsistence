@@ -331,6 +331,9 @@ rotation = 1.57105
 
 [node name="BreakableBox" parent="." instance=ExtResource( 11 )]
 position = Vector2( 18184.3, 2546.29 )
+
+[node name="BreakableBox2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2477.74, 139.977 )
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
 
 [editable path="Sawblade13"]
