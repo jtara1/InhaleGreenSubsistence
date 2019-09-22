@@ -28,12 +28,24 @@ _global_script_classes=[ {
 "class": "GameObject",
 "language": "GDScript",
 "path": "res://scripts/GameObject.gd"
+}, {
+"base": "Node",
+"class": "GameStateManager",
+"language": "GDScript",
+"path": "res://scripts/GameStateManager.gd"
+}, {
+"base": "Area2D",
+"class": "SpaceShip",
+"language": "GDScript",
+"path": "res://scripts/SpaceShip.gd"
 } ]
 _global_script_class_icons={
 "Agent": "",
 "Character": "",
 "Consumable": "",
-"GameObject": ""
+"GameObject": "",
+"GameStateManager": "",
+"SpaceShip": ""
 }
 
 [application]
@@ -52,6 +64,8 @@ Scene="*res://scripts/globals/Scene.gd"
 
 window/size/width=1280
 window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 

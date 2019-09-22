@@ -36,7 +36,7 @@ func get_character(): # cached
 	
 func set_character(character):
 	self.character = character
-	emit_signal("character_respawned", character) # global since the listeners won't have a ref to this new instance yet
+	emit_signal("character_respawned", character) # listeners won't have a ref to this new instance yet
 
 func _filter_characters(characters):
 	"""There can be multiple characters during the time he dies"""
@@ -46,11 +46,16 @@ func _filter_characters(characters):
 
 ##################
 # util
-func find_nodes_of_type(type):
+func find_nodes_of_type(type, return_first = false):
 	var nodes = []
 	
 	for child in scene_node.get_children():
 		if child is type:
+			if return_first:
+				return child
 			nodes.append(child)
 			
-	return nodes
+	return nodes if not return_first else null
+
+func find_node_of_type(type):
+	return find_nodes_of_type(type, true)

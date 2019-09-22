@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://images/space-ship/Spaceship_all.png" type="Texture" id=1]
-[ext_resource path="res://images/space-ship/Particle.png" type="Texture" id=2]
-[ext_resource path="res://audio/sfx/engine1.wav" type="AudioStream" id=3]
+[ext_resource path="res://scripts/SpaceShip.gd" type="Script" id=1]
+[ext_resource path="res://images/space-ship/Spaceship_all.png" type="Texture" id=2]
+[ext_resource path="res://images/space-ship/Particle.png" type="Texture" id=3]
+[ext_resource path="res://audio/sfx/engine1.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 20.6177 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "launch"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FireSprite:modulate")
+tracks/0/path = NodePath("Sprite/FireSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -21,25 +23,53 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.898039, 0.541176, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -10, -10 ), Vector2( 10, 10 ) ]
+}
 
 [node name="SpaceShip" type="Area2D"]
+scale = Vector2( 0.471447, 0.471447 )
+script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 22.9719 )
+scale = Vector2( 24.6718, 15.5934 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-
-[node name="FireSprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.997213, 0.98746, 1 )
-position = Vector2( -15.2886, 566.271 )
-z_index = -1
 texture = ExtResource( 2 )
 
+[node name="FireSprite" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( -15.2886, 566.271 )
+z_index = -1
+texture = ExtResource( 3 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "launch"
 playback_speed = 0.8
 anims/launch = SubResource( 2 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
+[connection signal="body_entered" from="." to="." method="_on_SpaceShip_body_entered"]
