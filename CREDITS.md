@@ -13,3 +13,5 @@
 | paper_crush.wav | https://opengameart.org/content/paper-crush-sounds |
 | RPG_Title:MainMenu_Music.ogg (main menu music) | https://opengameart.org/content/rpgtitlemainmenu |
 | portalRings2.png | https://opengameart.org/content/portals |
+| engine1.wav | https://opengameart.org/content/space-ship-engine-sounds |
+| Spaceship_flip.zip | https://opengameart.org/content/flat-spaceship-with-parts |
