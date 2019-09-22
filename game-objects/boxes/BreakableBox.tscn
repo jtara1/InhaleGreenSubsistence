@@ -45,7 +45,6 @@ margin_right = 38.4176
 margin_bottom = 59.0149
 rect_scale = Vector2( 0.50437, 0.50437 )
 custom_fonts/normal_font = ExtResource( 12 )
-text = "2"
 scroll_active = false
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]

@@ -2,7 +2,9 @@ extends "res://scripts/GameObject.gd" # extends Area2D
 
 export(int) var size_needed_to_break = 2
 
-	
+func _ready():
+	$RichTextLabel.text = str(size_needed_to_break)
+
 func break_self():
 	if not died:
 		$KinematicBody2D.queue_free()
