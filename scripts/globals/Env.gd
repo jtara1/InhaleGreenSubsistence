@@ -59,3 +59,17 @@ func find_nodes_of_type(type, return_first = false):
 
 func find_node_of_type(type):
 	return find_nodes_of_type(type, true)
+	
+func create_timer(parent_of_timer: Node, duration = 1.0, one_shot = true, autostart = true):
+	var timer = Timer.new()
+	
+	timer.wait_time = duration
+	timer.one_shot = one_shot
+	timer.autostart = autostart  # this timer never enters the scene tree so autostart attr has no effect
+	
+	parent_of_timer.add_child(timer)
+	
+	if autostart:
+		timer.start()
+	
+	return timer
