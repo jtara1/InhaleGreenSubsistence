@@ -26,6 +26,7 @@ onready var animator = $SlimeSprite/AnimationPlayer
 onready var raycast = $RayCast2D
 onready var hook_shot_particle = $HookShotParticles
 onready var particle_material = ParticlesMaterial.new()
+onready var dashes_remaining = initial_dashes
 
 var movement = Vector2()
 var full_jump = false
@@ -41,7 +42,6 @@ var user_input = Vector2()
 var is_dashing = false
 var connected_hookshot = false
 var particle_destination = Vector2()
-var dashes_remaining = 3
 
 ####################
 # core

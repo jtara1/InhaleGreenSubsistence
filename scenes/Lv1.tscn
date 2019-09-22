@@ -1,16 +1,19 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=1]
 [ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://ui/GameUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game-objects/Character.tscn" type="PackedScene" id=4]
-[ext_resource path="res://game-objects/Baby.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=7]
-[ext_resource path="res://game-objects/killzones/Killzone.tscn" type="PackedScene" id=8]
-[ext_resource path="res://game-objects/killzones/Sawblade.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game-objects/killzones/curves/left-to-right.tres" type="Curve2D" id=10]
-[ext_resource path="res://ui/info-graphics/GrappleGraphic.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ui/LargeNotifyBanner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game-objects/Character.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game-objects/Baby.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=8]
+[ext_resource path="res://game-objects/killzones/Killzone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game-objects/killzones/Sawblade.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game-objects/killzones/curves/left-to-right.tres" type="Curve2D" id=11]
+[ext_resource path="res://ui/info-graphics/GrappleGraphic.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game-objects/SpaceShip.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/components/GameStateManager.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "rotate"
@@ -118,53 +121,56 @@ tile_data = PoolIntArray( -2686825, 1610612750, 0, -2621289, 1610612750, 0, -262
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource( 3 )]
 
-[node name="Character" parent="." instance=ExtResource( 4 )]
+[node name="LargeNotifyBanner" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="Character" parent="." instance=ExtResource( 5 )]
 position = Vector2( 718.425, 381.649 )
+initial_dashes = 2
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 
-[node name="Baby" parent="." instance=ExtResource( 5 )]
+[node name="Baby" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1196.29, 110.457 )
 
-[node name="Baby2" parent="." instance=ExtResource( 5 )]
+[node name="Baby2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1743.28, -314.629 )
 
-[node name="Baby3" parent="." instance=ExtResource( 5 )]
+[node name="Baby3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1570.62, 192.274 )
 
-[node name="Baby4" parent="." instance=ExtResource( 5 )]
+[node name="Baby4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3639.91, 758.264 )
 
-[node name="Baby5" parent="." instance=ExtResource( 5 )]
+[node name="Baby5" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5988.97, 514.086 )
 
-[node name="RespawnPoint" parent="." instance=ExtResource( 6 )]
+[node name="RespawnPoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 700.151, 355.555 )
 
-[node name="RespawnPoint2" parent="." instance=ExtResource( 6 )]
+[node name="RespawnPoint2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4249.46, -134.735 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -20.0
 autoplay = true
 
-[node name="KillzoneGround" parent="." instance=ExtResource( 8 )]
+[node name="KillzoneGround" parent="." instance=ExtResource( 9 )]
 position = Vector2( 0, 900.798 )
 scale = Vector2( 1.41007e+009, 1 )
 
-[node name="Killzone3" parent="." instance=ExtResource( 9 )]
+[node name="Killzone3" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 5411.89, -169.106 )
 
 [node name="Path2D" parent="Killzone3" index="2"]
-curve = ExtResource( 10 )
+curve = ExtResource( 11 )
 
 [node name="PathFollow2D" parent="Killzone3/Path2D" index="0"]
 position = Vector2( 14.3875, 0.00361606 )
 offset = 14.3611
 
-[node name="Killzone4" parent="." instance=ExtResource( 9 )]
+[node name="Killzone4" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 5239.12, 25.4279 )
 
@@ -172,7 +178,7 @@ position = Vector2( 5239.12, 25.4279 )
 anims/rotate = SubResource( 1 )
 
 [node name="Path2D" parent="Killzone4" index="2"]
-curve = ExtResource( 10 )
+curve = ExtResource( 11 )
 
 [node name="PathFollow2D" parent="Killzone4/Path2D" index="0"]
 position = Vector2( 14.3875, 0.00361606 )
@@ -181,7 +187,7 @@ offset = 14.3611
 [node name="AnimationPlayer" parent="Killzone4" index="3"]
 anims/go-then-return = SubResource( 2 )
 
-[node name="Killzone5" parent="." instance=ExtResource( 9 )]
+[node name="Killzone5" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 5740.26, 41.1423 )
 
@@ -200,11 +206,11 @@ offset = 14.3611
 playback_speed = 0.5
 anims/go-then-return = SubResource( 5 )
 
-[node name="GrappleGraphic" parent="." instance=ExtResource( 11 )]
+[node name="GrappleGraphic" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1310.46, -63.9963 )
 scale = Vector2( 1.6623, 1.6623 )
 
-[node name="Sawblade" parent="." instance=ExtResource( 9 )]
+[node name="Sawblade" parent="." instance=ExtResource( 10 )]
 position = Vector2( 8524.95, -1049.25 )
 
 [node name="Path2D" parent="Sawblade" index="2"]
@@ -214,7 +220,7 @@ curve = SubResource( 6 )
 position = Vector2( -0.320251, 38.2664 )
 rotation = -1.57055
 
-[node name="Sawblade2" parent="." instance=ExtResource( 9 )]
+[node name="Sawblade2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 9006.47, -1423.41 )
 
 [node name="Path2D" parent="Sawblade2" index="2"]
@@ -223,6 +229,12 @@ curve = SubResource( 7 )
 [node name="PathFollow2D" parent="Sawblade2/Path2D" index="0"]
 position = Vector2( 1.46643, 45.437 )
 rotation = -1.59793
+
+[node name="SpaceShip" parent="." instance=ExtResource( 13 )]
+position = Vector2( 10182.9, -1317.16 )
+scale = Vector2( 1, 1 )
+
+[node name="GameStateManager" parent="." instance=ExtResource( 14 )]
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
 
 [editable path="Killzone3"]
