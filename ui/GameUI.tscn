@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/GameUI.gd" type="Script" id=1]
+[ext_resource path="res://scripts/ui/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://fonts/patk_54.tres" type="DynamicFont" id=2]
+
 
 [node name="GameUI" type="Control"]
 margin_top = 470.294
