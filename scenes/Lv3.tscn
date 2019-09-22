@@ -335,6 +335,10 @@ position = Vector2( 14291.3, 12599 )
 [node name="Path2D" parent="Sawblade6" index="2"]
 curve = SubResource( 11 )
 
+[node name="PathFollow2D" parent="Sawblade6/Path2D" index="0"]
+position = Vector2( 99.1605, -1.79901 )
+rotation = 3.12919
+
 [node name="BreakableBox" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true
 position = Vector2( 7965.51, 12040.1 )
@@ -350,10 +354,13 @@ custom_colors/default_color = Color( 1, 1, 1, 1 )
 editor/display_folded = true
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 14325.6, 11873.2 )
-scale = Vector2( 15.9212, 15.9212 )
 
 [node name="Path2D" parent="Sawblade7" index="2"]
 curve = SubResource( 12 )
+
+[node name="PathFollow2D" parent="Sawblade7/Path2D" index="0"]
+position = Vector2( 2.13885, 90.8716 )
+rotation = -1.59123
 
 [node name="Sawblade8" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
@@ -362,6 +369,10 @@ position = Vector2( 15022, 11672.2 )
 
 [node name="Path2D" parent="Sawblade8" index="2"]
 curve = SubResource( 13 )
+
+[node name="PathFollow2D" parent="Sawblade8/Path2D" index="0"]
+position = Vector2( 82.7845, -1.37048 )
+rotation = 3.13438
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
 
 [editable path="Killzone3"]

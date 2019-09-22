@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/ui/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://images/backgrounds/snow.png" type="Texture" id=2]
 [ext_resource path="res://fonts/patk_108.tres" type="DynamicFont" id=3]
 [ext_resource path="res://fonts/patk_54_blue_no_outline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://audio/music/RPG_Title_MainMenu_Music.ogg" type="AudioStream" id=5]
+[ext_resource path="res://fonts/patk_36.tres" type="DynamicFont" id=5]
+[ext_resource path="res://audio/music/RPG_Title_MainMenu_Music.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -119,37 +120,41 @@ window_title = "About"
 [node name="Label" type="Label" parent="WindowDialog"]
 margin_left = 30.0
 margin_top = 30.0
-margin_right = 40.0
-margin_bottom = 14.0
+margin_right = 620.0
+margin_bottom = 382.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 1, 0.87451, 0.839216, 1 )
 text = "Controls:
 - wasd to move
 - space to jump
-- q or left click to grapple
+- q, r, or left click to grapple
 - shift to dash"
 
 [node name="CreditsDialog" type="WindowDialog" parent="."]
 margin_right = 86.0
 margin_bottom = 40.0
 custom_styles/panel = SubResource( 6 )
-window_title = "About"
+window_title = "Credits"
 
 [node name="Label" type="Label" parent="CreditsDialog"]
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 0.87451, 0.839216, 1 )
 text = "Created By:
 James T. ( github.com/jtara1 )
-Joshua
+Joshua R. ( github.com/jaerei )
 
-Assets Made By:"
+Assets Made By:
+Various people found from opengameart.org
+Ping James or Josh for the list.
+Tracked in CREDITS.md in the 
+(private) github repo"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = -7.0
 autoplay = true
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
