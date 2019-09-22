@@ -9,9 +9,10 @@
 [ext_resource path="res://game-objects/killzones/Killzone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/components/ParallaxBackground.tscn" type="PackedScene" id=8]
 
-[node name="Overworld" type="Node"]
+[node name="Overworld" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0.2, 0.215686, 0.239216, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 70, 70 )
 collision_use_kinematic = true
