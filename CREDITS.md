@@ -11,4 +11,4 @@
 | penguin attack font | https://www.1001fonts.com/penguin-attack-font.html |
 | box animation.zip | https://opengameart.org/content/box-2 |
 | paper_crush.wav | https://opengameart.org/content/paper-crush-sounds |
-| Basic_Beta.mp3 (main menu music) | https://opengameart.org/content/basi-beta |
+| RPG_Title:MainMenu_Music.ogg (main menu music) | https://opengameart.org/content/rpgtitlemainmenu |
