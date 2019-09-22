@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://game-objects/PortalToScene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game-objects/Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/GameUI.tscn" type="PackedScene" id=4]
 
 [node name="Overworld" type="Node"]
 
@@ -23,3 +24,7 @@ scene_to_load = "Lv2"
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1235.71, 1420.18 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource( 4 )]
