@@ -8,9 +8,8 @@ var scene_node
 
 
 func _ready():
-	root = get_tree().get_root()	
+	root = get_tree().get_root()
 	init()
-#	scene_node.connect("tree_exited", self, "wait_for_scene_node_to_enter_tree")
 	
 func init():
 	update_scene_node()
@@ -29,7 +28,11 @@ func update_character():
 	character = find_character()
 
 func get_character(): # cached
-	return character if character != null else init()
+	# character is null pointer / dangling pointer or null, re-init
+	if character == null or not weakref(character).get_ref():
+		init() # re-init (scene changed)
+		
+	return character
 	
 func set_character(character):
 	self.character = character
