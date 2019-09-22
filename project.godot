@@ -46,6 +46,7 @@ config/icon="res://icon.png"
 
 Env="*res://scripts/globals/Env.gd"
 Vector2f="*res://scripts/globals/Vector2f.gd"
+Scene="*res://scripts/globals/Scene.gd"
 
 [display]
 
