@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://images/backgrounds/snow.png" type="Texture" id=2]
 [ext_resource path="res://fonts/patk_108.tres" type="DynamicFont" id=3]
-[ext_resource path="res://fonts/patk_54.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/patk_54_blue_no_outline.tres" type="DynamicFont" id=4]
 [ext_resource path="res://audio/music/Basic_Beta.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
@@ -19,8 +19,17 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.419608, 0.427451, 1, 1 ), Color( 0.2, 0.45098, 0.286275, 1 ) ]
+"values": [ Color( 0.419608, 0.427451, 1, 1 ), Color( 0.596078, 0.701961, 0.482353, 1 ) ]
 }
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.662745, 0.8, 0.513726, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.741176, 0.796078, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0.87451, 0.839216, 1 )
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -37,9 +46,9 @@ texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Control"]
 margin_left = 98.0
-margin_top = 103.582
+margin_top = 67.5721
 margin_right = 1182.0
-margin_bottom = 238.582
+margin_bottom = 202.572
 custom_fonts/font = ExtResource( 3 )
 text = "Inhale Green Subsistence"
 
@@ -53,27 +62,41 @@ margin_right = 1280.0
 margin_bottom = 720.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
-margin_left = 576.0
-margin_top = 271.0
-margin_right = 704.0
-margin_bottom = 449.0
+margin_left = 510.0
+margin_top = 228.0
+margin_right = 770.0
+margin_bottom = 492.0
 custom_constants/separation = 30
 
 [node name="Start" type="Button" parent="Control/CenterContainer/VBoxContainer"]
-margin_right = 128.0
-margin_bottom = 74.0
+margin_right = 260.0
+margin_bottom = 68.0
+custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 4 )
-text = "Start"
+custom_colors/font_color = Color( 0.345098, 0.435294, 0.752941, 1 )
+text = "    Start    "
+
+[node name="About" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+margin_top = 98.0
+margin_right = 260.0
+margin_bottom = 166.0
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.345098, 0.435294, 0.752941, 1 )
+text = "About"
 
 [node name="Quit" type="Button" parent="Control/CenterContainer/VBoxContainer"]
-margin_top = 104.0
-margin_right = 128.0
-margin_bottom = 178.0
+margin_top = 196.0
+margin_right = 260.0
+margin_bottom = 264.0
+custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.345098, 0.435294, 0.752941, 1 )
 text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/About" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

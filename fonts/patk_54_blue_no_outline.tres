@@ -3,7 +3,5 @@
 [ext_resource path="res://fonts/PenguinAttack.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 108
-outline_size = 5
-outline_color = Color( 0.345098, 0.435294, 0.752941, 1 )
+size = 54
 font_data = ExtResource( 1 )
