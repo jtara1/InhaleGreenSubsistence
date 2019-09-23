@@ -26,12 +26,12 @@ scale = Vector2( 3, 3 )
 
 [node name="IdleAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-volume_db = -10.0
+volume_db = -3.0
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-[connection signal="body_entered" from="." to="." method="_on_Baby_body_entered"]
 [connection signal="body_entered" from="." to="ConsumableBaby" method="_on_Baby_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Baby_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_AudioStreamPlayer2D_finished"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]

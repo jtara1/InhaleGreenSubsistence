@@ -234,6 +234,7 @@ position = Vector2( 13632.6, 6019.2 )
 
 [node name="RespawnPoint" parent="." instance=ExtResource( 10 )]
 position = Vector2( 743.598, 353.283 )
+is_current_spawn_point = true
 
 [node name="RespawnPoint2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3681.06, 214.689 )

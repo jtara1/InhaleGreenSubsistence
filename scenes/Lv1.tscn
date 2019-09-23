@@ -113,7 +113,7 @@ tile_data = PoolIntArray( -2752357, -1073741819, 0, -2752356, -1073741819, 0, -2
 [node name="LargeNotifyBanner" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="Character" parent="." instance=ExtResource( 4 )]
-position = Vector2( 718.425, 381.649 )
+position = Vector2( 677.727, -56.9889 )
 initial_dashes = 2
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
@@ -135,6 +135,7 @@ position = Vector2( 5988.97, 514.086 )
 
 [node name="RespawnPoint" parent="." instance=ExtResource( 6 )]
 position = Vector2( 700.151, 355.555 )
+is_current_spawn_point = true
 
 [node name="RespawnPoint2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4249.46, -134.735 )

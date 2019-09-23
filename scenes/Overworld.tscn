@@ -24,10 +24,6 @@ editor/display_folded = true
 position = Vector2( 1017.4, 1775.65 )
 scene_to_load = "Lv0"
 
-[node name="Label" parent="PortalToScene" index="2"]
-margin_left = -20.0
-text = "Level 0"
-
 [node name="PortalToScene2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2332.08, 1144.35 )
 scene_to_load = "Lv2"
@@ -62,5 +58,3 @@ position = Vector2( 2102.97, 3075.67 )
 scale = Vector2( 999999, 1 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
-
-[editable path="PortalToScene"]

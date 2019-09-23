@@ -22,6 +22,7 @@ tile_data = PoolIntArray( -1048479, 15, 0, -1048474, 11, 0, -1048473, 11, 0, -10
 
 [node name="RespawnPoint" parent="." instance=ExtResource( 2 )]
 position = Vector2( 676.653, 846.813 )
+is_current_spawn_point = true
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( 717.815, 558.545 )
