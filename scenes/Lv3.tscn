@@ -349,6 +349,7 @@ rotation = 3.12919
 editor/display_folded = true
 position = Vector2( 7965.51, 12040.1 )
 scale = Vector2( 2.3, 2.3 )
+size_needed_to_break = 3
 
 [node name="AnimatedSprite" parent="BreakableBox" index="0"]
 modulate = Color( 0, 0, 0, 1 )

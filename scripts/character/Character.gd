@@ -27,6 +27,8 @@ onready var raycast = $RayCast2D
 onready var hook_shot_particle = $HookShotParticles
 onready var particle_material = ParticlesMaterial.new()
 onready var dashes_remaining = initial_dashes
+onready var jump_audio = $JumpAudio
+onready var hook_audio = $HookAudio
 
 var movement = Vector2()
 var full_jump = false
@@ -124,6 +126,7 @@ func stopped_running():
 # TODO add a generic grace period when falling to jump
 func air_controls():
 	if Input.is_action_pressed("jump") and is_on_floor() and not using_hookshot:
+		jump_audio.play()
 		movement.y = -jump_speed / 2
 		$JumpTimer.start()
 		full_jump = false
@@ -146,6 +149,7 @@ func hook_shot():
 	raycast.cast_to = raycast_direction
 	
 	if Input.is_action_just_pressed("shoot") and not hookshot_coolingdown:
+		hook_audio.play()
 		hook_shot_particle.global_position = self.global_position + Vector2(4.6,12.6)
 		animator.play("shoot", -1, 5)
 		using_hookshot = true
@@ -165,6 +169,7 @@ func hook_shot():
 	hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, particle_destination, 0.15)		
 	if connected_hookshot:
 		global_position = Vector2f.lerp(global_position, target, 0.15)
+		movement.y = 0
 
 ####################
 # dash
@@ -232,7 +237,7 @@ func _on_HookTravelTimer_timeout():
 	using_hookshot = false
 	connected_hookshot = false
 	hook_shot_particle.emitting = false
-	movement.y = 0
+	#movement.y = 0
 
 func _on_DashTime_timeout():
 	is_dashing = false
