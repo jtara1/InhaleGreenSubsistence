@@ -228,12 +228,12 @@ scale = Vector2( 1, 1 )
 [node name="BreakableBox" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2552.25, 107.201 )
 scale = Vector2( 3.2, 3.2 )
-size_needed_to_break = 3
+size_needed_to_break = 4
 
 [node name="BreakableBox2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 7010.04, -140.454 )
 scale = Vector2( 4.6, 4.6 )
-size_needed_to_break = 5
+size_needed_to_break = 6
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 15 )]
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]

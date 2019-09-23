@@ -169,6 +169,7 @@ func hook_shot():
 	hook_shot_particle.global_position = Vector2f.lerp(hook_shot_particle.global_position, particle_destination, 0.15)		
 	if connected_hookshot:
 		global_position = Vector2f.lerp(global_position, target, 0.15)
+		movement.y = 0
 
 ####################
 # dash
@@ -236,7 +237,7 @@ func _on_HookTravelTimer_timeout():
 	using_hookshot = false
 	connected_hookshot = false
 	hook_shot_particle.emitting = false
-	movement.y = 0
+	#movement.y = 0
 
 func _on_DashTime_timeout():
 	is_dashing = false
