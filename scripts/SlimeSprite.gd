@@ -2,4 +2,5 @@ extends Sprite
 
 
 func _ready():
-	$AnimationPlayer.play("idle")
+	if $AnimationPlayer:
+		$AnimationPlayer.play("idle")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Staryu - cropped.png-a3d616d3752d37f52d635e3c666f7791.stex"
+path="res://.import/white-circle.png-83745e9204aa2e499d55e8d967ec5b51.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Staryu - cropped.png"
-dest_files=[ "res://.import/Staryu - cropped.png-a3d616d3752d37f52d635e3c666f7791.stex" ]
+source_file="res://images/white-circle.png"
+dest_files=[ "res://.import/white-circle.png-83745e9204aa2e499d55e8d967ec5b51.stex" ]
 
 [params]
 
@@ -20,8 +20,8 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
+flags/filter=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
