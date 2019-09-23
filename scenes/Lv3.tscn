@@ -137,7 +137,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 2.23877, 95.6918, 0, 0, 0, 0, -0.249512, 0.221008 )
 }
 
-[node name="Main" type="Node2D"]
+[node name="Lv3" type="Node2D"]
 
 [node name="GameStateManager" parent="." instance=ExtResource( 1 )]
 
