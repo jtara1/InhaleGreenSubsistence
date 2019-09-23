@@ -25,7 +25,3 @@ func set_animation_speed(speed: float): # speed in range (0, inf)
 	
 func _on_GamaeStateManager_game_won():
 	play_animation("Victory!", Color.green)
-	Env.create_timer(self, 5).connect("timeout", self, "_on_Timer_timeout") 
-	
-func _on_Timer_timeout():
-		Scene.load_scene("Overworld")
