@@ -1,5 +1,6 @@
 # InhaleGreenSubsistence
-NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM nom
+
+Submission for https://itch.io/jam/godot-wild-jam-13/entries
 
 
 useful sites to help with assets
