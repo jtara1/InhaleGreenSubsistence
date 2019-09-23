@@ -336,10 +336,17 @@ position = Vector2( -0.0962524, -60.509 )
 rotation = 1.57105
 
 [node name="BreakableBox" parent="." instance=ExtResource( 12 )]
-position = Vector2( 17390.7, 2913.34 )
+position = Vector2( 15020.4, 2792.92 )
 
 [node name="BreakableBox2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 2477.74, 139.977 )
+position = Vector2( 2486.53, 106.573 )
+scale = Vector2( 3.4, 3.4 )
+size_needed_to_break = 3
+
+[node name="BreakableBox3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 5493.86, -1885.01 )
+scale = Vector2( 4, 4 )
+size_needed_to_break = 4
 
 [node name="SpaceShip" parent="." instance=ExtResource( 13 )]
 position = Vector2( 18189.4, 2792.44 )
