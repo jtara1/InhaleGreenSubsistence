@@ -9,6 +9,8 @@ const CharacterNode = preload("res://game-objects/Character.tscn")
 
 onready var Env = get_node("/root/Env")
 
+onready var flag_audio = $AudioStreamPlayer2D
+
 onready var root = $"../"
 
 
@@ -59,6 +61,7 @@ func _on_Character_character_died():
 func _on_RespawnPoint_body_entered(body):
 	if body is Character:
 		is_current_spawn_point = true
+		flag_audio.play()
 		body.dashes_remaining = body.initial_dashes
 		body.emit_signal("dashed", body.dashes_remaining)
 		$Sprite/RespawnPointAnimationPlayer.play("idle2") # blue flag
