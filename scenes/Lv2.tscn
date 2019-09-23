@@ -1,19 +1,20 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=1]
-[ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://ui/GameUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/LargeNotifyBanner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://game-objects/Character.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game-objects/killzones/Sawblade.tscn" type="PackedScene" id=6]
-[ext_resource path="res://game-objects/killzones/Flame.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game-objects/Baby.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=9]
-[ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=10]
-[ext_resource path="res://game-objects/killzones/Killzone.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game-objects/boxes/BreakableBox.tscn" type="PackedScene" id=12]
-[ext_resource path="res://game-objects/SpaceShip.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/components/GameStateManager.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/components/DayParallexBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://images/backgrounds/background0 - green mountains.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/platforms_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://ui/GameUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/LargeNotifyBanner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game-objects/Character.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game-objects/killzones/Sawblade.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game-objects/killzones/Flame.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game-objects/Baby.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/components/RespawnPoint.tscn" type="PackedScene" id=10]
+[ext_resource path="res://audio/music/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" type="AudioStream" id=11]
+[ext_resource path="res://game-objects/killzones/Killzone.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game-objects/boxes/BreakableBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game-objects/SpaceShip.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/components/GameStateManager.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -81,23 +82,14 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2( 0.1, 0.1 )
-transform = Transform2D( 1, 0, 0, 1, 0.1, 0.1 )
+[node name="ParallaxBackground2" parent="." instance=ExtResource( 1 )]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1280, 0 )
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-margin_top = -1341.1
-margin_right = 1920.0
-margin_bottom = -261.098
-rect_scale = Vector2( 2.21978, 2.21978 )
-texture = ExtResource( 1 )
+[node name="TextureRect" parent="ParallaxBackground2/ParallaxLayer" index="0"]
+texture = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color( 0.568627, 0.556863, 0.996078, 1 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 70, 70 )
 collision_use_kinematic = true
 format = 1
@@ -105,17 +97,17 @@ tile_data = PoolIntArray( -2752374, -536870896, 0, -2752373, -536870896, 0, -275
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource( 3 )]
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource( 4 )]
 
-[node name="LargeNotifyBanner" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="LargeNotifyBanner" parent="CanvasLayer" instance=ExtResource( 5 )]
 
-[node name="Character" parent="." instance=ExtResource( 5 )]
+[node name="Character" parent="." instance=ExtResource( 6 )]
 position = Vector2( 744.261, 300.036 )
 initial_dashes = 1
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 
-[node name="Sawblade13" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade13" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 11824.2, 3693.76 )
 
@@ -126,7 +118,7 @@ curve = SubResource( 1 )
 position = Vector2( 1.60828, 58.8049 )
 rotation = -1.60245
 
-[node name="Sawblade14" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade14" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 12191.1, 4514.36 )
 
@@ -137,7 +129,7 @@ curve = SubResource( 2 )
 position = Vector2( -1.94128, -46.7535 )
 rotation = 1.53053
 
-[node name="Sawblade9" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade9" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 13327.8, 4661.87 )
 
@@ -148,7 +140,7 @@ curve = SubResource( 3 )
 position = Vector2( 75.5068, -0.726624 )
 rotation = 3.13351
 
-[node name="Sawblade11" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade11" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 13144.4, 5778.5 )
 
@@ -159,7 +151,7 @@ curve = SubResource( 4 )
 position = Vector2( 81.3821, -34.4307 )
 rotation = 3.12797
 
-[node name="Sawblade12" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade12" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 14090.1, 5800.82 )
 
@@ -172,11 +164,11 @@ curve = SubResource( 5 )
 position = Vector2( 0.0161133, -46.2845 )
 rotation = 1.60904
 
-[node name="Killzone4" parent="." instance=ExtResource( 7 )]
+[node name="Killzone4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 6927.62, -137.077 )
 scale = Vector2( 4.98354, 10 )
 
-[node name="Sawblade6" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade6" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 8229.65, -462.782 )
 
@@ -187,7 +179,7 @@ curve = SubResource( 6 )
 position = Vector2( -0.600708, -21.8087 )
 rotation = 1.54248
 
-[node name="Sawblade7" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade7" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 8735.43, -396.308 )
 
@@ -204,73 +196,73 @@ curve = SubResource( 7 )
 position = Vector2( -21.6954, -3.37781 )
 rotation = -0.0283124
 
-[node name="Killzone5" parent="." instance=ExtResource( 7 )]
+[node name="Killzone5" parent="." instance=ExtResource( 8 )]
 position = Vector2( 7048.47, -134.56 )
 scale = Vector2( 4.98354, 10 )
 
-[node name="Killzone6" parent="." instance=ExtResource( 7 )]
+[node name="Killzone6" parent="." instance=ExtResource( 8 )]
 position = Vector2( 7171.83, -134.56 )
 scale = Vector2( 4.98354, 10 )
 
-[node name="Killzone7" parent="." instance=ExtResource( 7 )]
+[node name="Killzone7" parent="." instance=ExtResource( 8 )]
 position = Vector2( 7286.64, -135.57 )
 scale = Vector2( 4.98354, 10 )
 
-[node name="Killzone8" parent="." instance=ExtResource( 7 )]
+[node name="Killzone8" parent="." instance=ExtResource( 8 )]
 position = Vector2( 7397.95, -138.585 )
 scale = Vector2( 4.98354, 10 )
 
-[node name="Killzone9" parent="." instance=ExtResource( 7 )]
+[node name="Killzone9" parent="." instance=ExtResource( 8 )]
 position = Vector2( 7504.28, -139.595 )
 scale = Vector2( 4.98354, 10 )
 
-[node name="Baby" parent="." instance=ExtResource( 8 )]
+[node name="Baby" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1196.29, 110.457 )
 
-[node name="Baby2" parent="." instance=ExtResource( 8 )]
+[node name="Baby2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 8536.44, -1325.81 )
 
-[node name="Baby3" parent="." instance=ExtResource( 8 )]
+[node name="Baby3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1526.36, 364.889 )
 
-[node name="Baby4" parent="." instance=ExtResource( 8 )]
+[node name="Baby4" parent="." instance=ExtResource( 9 )]
 position = Vector2( 5119.46, -782.665 )
 
-[node name="Baby6" parent="." instance=ExtResource( 8 )]
+[node name="Baby6" parent="." instance=ExtResource( 9 )]
 position = Vector2( 13632.6, 6019.2 )
 
-[node name="RespawnPoint" parent="." instance=ExtResource( 9 )]
+[node name="RespawnPoint" parent="." instance=ExtResource( 10 )]
 position = Vector2( 743.598, 353.283 )
 
-[node name="RespawnPoint2" parent="." instance=ExtResource( 9 )]
+[node name="RespawnPoint2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3681.06, 214.689 )
 
-[node name="RespawnPoint3" parent="." instance=ExtResource( 9 )]
+[node name="RespawnPoint3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 5159.94, -1540.45 )
 
-[node name="RespawnPoint4" parent="." instance=ExtResource( 9 )]
+[node name="RespawnPoint4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 8559.14, -1332.43 )
 
-[node name="RespawnPoint5" parent="." instance=ExtResource( 9 )]
+[node name="RespawnPoint5" parent="." instance=ExtResource( 10 )]
 position = Vector2( 12853.8, 4348.14 )
 
-[node name="RespawnPoint6" parent="." instance=ExtResource( 9 )]
+[node name="RespawnPoint6" parent="." instance=ExtResource( 10 )]
 position = Vector2( 13640.1, 6026.1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = -20.0
 autoplay = true
 
-[node name="Killzone" parent="." instance=ExtResource( 11 )]
+[node name="Killzone" parent="." instance=ExtResource( 12 )]
 position = Vector2( 5617.5, 6795.19 )
 scale = Vector2( 1e+007, 1 )
 
-[node name="Killzone10" parent="." instance=ExtResource( 11 )]
+[node name="Killzone10" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1997.17, 1022.91 )
 scale = Vector2( 100, 1 )
 
-[node name="Sawblade" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2964.17, 306.948 )
 
@@ -281,7 +273,7 @@ curve = SubResource( 8 )
 position = Vector2( 34.2834, -0.427784 )
 rotation = 3.12366
 
-[node name="Sawblade2" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade2" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 4202.84, -99.4685 )
 
@@ -292,7 +284,7 @@ curve = SubResource( 9 )
 position = Vector2( 55.0943, -0.647633 )
 rotation = 2.68169
 
-[node name="Sawblade3" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade3" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 4730.59, -1857.31 )
 
@@ -306,13 +298,13 @@ rotation = -1.60039
 [node name="AnimationPlayer" parent="Sawblade3" index="3"]
 playback_speed = 1.5
 
-[node name="Sawblade4" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1822.3, 542.706 )
 
-[node name="Sawblade5" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade5" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2158.68, 547.132 )
 
-[node name="Sawblade8" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade8" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 8821.51, -932.544 )
 
@@ -324,7 +316,7 @@ curve = SubResource( 11 )
 position = Vector2( 1.80212, -50.0872 )
 rotation = 1.60853
 
-[node name="Sawblade10" parent="." instance=ExtResource( 6 )]
+[node name="Sawblade10" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 15921.8, 2743.37 )
 
@@ -335,25 +327,27 @@ curve = SubResource( 12 )
 position = Vector2( -0.0962524, -60.509 )
 rotation = 1.57105
 
-[node name="BreakableBox" parent="." instance=ExtResource( 12 )]
+[node name="BreakableBox" parent="." instance=ExtResource( 13 )]
 position = Vector2( 15020.4, 2792.92 )
 
-[node name="BreakableBox2" parent="." instance=ExtResource( 12 )]
+[node name="BreakableBox2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2486.53, 106.573 )
 scale = Vector2( 3.4, 3.4 )
 size_needed_to_break = 3
 
-[node name="BreakableBox3" parent="." instance=ExtResource( 12 )]
+[node name="BreakableBox3" parent="." instance=ExtResource( 13 )]
 position = Vector2( 5493.86, -1885.01 )
 scale = Vector2( 4, 4 )
 size_needed_to_break = 4
 
-[node name="SpaceShip" parent="." instance=ExtResource( 13 )]
+[node name="SpaceShip" parent="." instance=ExtResource( 14 )]
 position = Vector2( 18189.4, 2792.44 )
 scale = Vector2( 1, 1 )
 
-[node name="GameStateManager" parent="." instance=ExtResource( 14 )]
+[node name="GameStateManager" parent="." instance=ExtResource( 15 )]
 [connection signal="character_died" from="Character" to="RespawnPoint" method="_on_Character_character_died"]
+
+[editable path="ParallaxBackground2"]
 
 [editable path="Sawblade13"]
 
