@@ -201,6 +201,8 @@ func respawned(attributes):
 		self.set(key, attributes[key])
 	
 	$CharacterScaling.set_body_scaling(body_size)
+	$Camera2D.set_target_zoom(body_size)
+	
 	dashes_remaining = initial_dashes
 	emit_signal("dashed", dashes_remaining)
 

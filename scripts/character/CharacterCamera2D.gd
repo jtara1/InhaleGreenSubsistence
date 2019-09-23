@@ -4,6 +4,7 @@ export(float) var scaling = 0.2
 export(Vector2) var max_zoom = Vector2(10, 10)
 
 onready var Vector2f = get_node("/root/Vector2f")
+onready var Env = get_node("/root/Env")
 
 onready var character = $"../"
 
@@ -13,7 +14,8 @@ var target_zoom = init_zoom
 
 func _ready():
 	character.connect("body_size_changed", self, "_on_Character_body_size_changed")
-	character.connect("character_died", self, "_on_Character_character_died")
+	Env.connect("character_respawned", self, "_on_Env_character_respawned")
+	
 	set_target_zoom(character.body_size)
 	
 func _physics_process(delta):
@@ -25,6 +27,3 @@ func set_target_zoom(body_size):
 	
 func _on_Character_body_size_changed(new_body_size):
 	set_target_zoom(new_body_size)
-
-func _on_Character_character_died():
-	set_target_zoom(character.body_size)
